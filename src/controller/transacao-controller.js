@@ -1,3 +1,4 @@
+import TransactionsDAO from "../DAO/transacao-dao.js";
 import TransctionsDAO from "../DAO/transacao-dao.js";
 
 class TransactionsController {
@@ -9,6 +10,13 @@ class TransactionsController {
         res.json(e);
       }
     });
+    app.get("/transactions/id/:id", async (req, res) => {
+      try {
+        res.json(await TransactionsDAO.pegaUmDado(req.params.id))
+      } catch (e) {
+        res.json(e)
+      }
+    })
   };
 }
 

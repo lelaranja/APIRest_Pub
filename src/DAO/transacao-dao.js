@@ -1,7 +1,8 @@
 import DAO from "./base-dao.js";
 
 class TransactionsDAO extends DAO{
-    static querySelect = 'SELECT * FROM TRANSACTIONS'
+    static querySelectAll = 'SELECT * FROM TRANSACTIONS'
+    static querySelect = 'SELECT * FROM TRANSACTIONS WHERE ID = ?'
     
 }
 
