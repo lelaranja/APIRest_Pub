@@ -2,10 +2,9 @@ import DB from "../database/db-sqlite.js"
 
 class DAO{
 
-    static pegaTodosDados(entidade){
+    static pegaTodosDados(){
         return new Promise((resolve, reject)=>{
-
-            DB.all(`SELECT * FROM ${entidade}`, (erro, linhas) =>{
+            DB.all(this.querySelect, (erro, linhas) =>{
                 if(erro){
                     reject({
                         msg : erro.message,
@@ -19,7 +18,9 @@ class DAO{
                 }
             })
         })
-
+    }
+    static inserirDados(){
+        
     }
 }
 
