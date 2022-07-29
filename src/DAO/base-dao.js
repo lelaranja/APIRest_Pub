@@ -62,7 +62,7 @@ class DAO {
           });
         } else {
           resolve({
-            resultado: `Dados atualizados com sucesso onde id = ${comparador}`,
+            resultado: `Dados atualizados com sucesso onde parametro = ${comparador}`,
             erro: false,
           });
         }
@@ -79,7 +79,7 @@ class DAO {
           });
         } else {
           resolve({
-            resultado: `Dados deletados com sucesso onde id = ${parametro}`,
+            resultado: `Dados deletados com sucesso onde parametro = ${parametro}`,
             erro: false,
           });
         }
