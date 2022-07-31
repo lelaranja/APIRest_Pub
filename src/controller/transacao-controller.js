@@ -4,8 +4,7 @@ import Validacoes from "../services/valida-base.js";
 
 class TransactionsController {
   static routes = (app) => {
-
-//OK
+    //OK
 
     app.get("/transactions", async (req, res) => {
       try {
@@ -15,11 +14,10 @@ class TransactionsController {
       }
     });
 
-//OK
+    //OK
 
     app.get("/transactions/id/:id", async (req, res) => {
       try {
-        
         const resposta = await TransactionsDAO.pegaUmDado(req.params.id);
         res.status(resposta.status).json(resposta.resultado);
       } catch (e) {
@@ -27,30 +25,21 @@ class TransactionsController {
       }
     });
 
-// OK
+    // OK
 
     app.post("/transactions/criar", async (req, res) => {
       try {
-        const body = req.body;
-        const dados = new TransactionsModel(
-          body.funcionario,
-          body.produtos,
-          body.valorCompra
-        );
-        await Validacoes.validBody(dados);
-        res.json(await TransactionsDAO.inserirDados(dados));
+        const dados = new TransactionsModel(req.body);
+        await Validacoes.reqIsEmpty(dados)
+        const resposta = await TransactionsDAO.inserirDados(dados);
+        res.status(resposta.status).json(resposta.resultado);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }
     });
 
     app.put("/transactions/atualizar/id/:id", async (req, res) => {
-      const body = req.body;
-      const dados = new TransactionsModel(
-        body.funcionario,
-        body.produtos,
-        body.valorCompra
-      );
+      const dados = new TransactionsModel(req.body);
       try {
         res.json(await TransactionsDAO.atualizarDado(dados, req.params.id));
       } catch (e) {

@@ -5,14 +5,14 @@ import Validacoes from "../services/valida-base.js";
 class DAO {
 
   //esse metodo pega todos os dados do seu banco de dados, basta em sua classe filha.
-  
+
   static pegaTodosDados() {
     return new Promise((resolve, reject) => {
       DB.all(this.querySelectAll, (erro, linhas) => {
         if (erro) {
           reject(new ErrosModel("Erro desconhecido", 500, erro));
         } else if (Validacoes.isEmpty(linhas)) {
-          reject(new ErrosModel("Dados não encontrados", 404));
+          reject(new ErrosModel("Banco de dados vazio", 404));
         } else {
           resolve({
             resultado: linhas,
@@ -35,7 +35,7 @@ class DAO {
         } else {
           resolve({
             resultado: linhas,
-            status: 200,
+            status: 200
           });
         }
       });
@@ -47,10 +47,15 @@ class DAO {
       DB.run(this.queryInsert, ...Object.values(dados), (erro) => {
         if (erro) {
           reject(new ErrosModel("Erro desconhecido", 500, erro));
-        } else {
+        }  else {
           resolve({
-            resultado: `Dados inseridos com sucesso`,
-            erro: false,
+            resultado: {
+              msg: {
+                msg:"dados inseridos com sucesso",
+                dados : dados
+              }
+            },
+            status: 201
           });
         }
       });
