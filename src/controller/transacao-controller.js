@@ -4,17 +4,16 @@ import Validacoes from "../services/valida-base.js";
 
 class TransactionsController {
   static routes = (app) => {
-    //OK
 
     app.get("/transactions", async (req, res) => {
       try {
-        res.json(await TransactionsDAO.pegaTodosDados());
+        const resposta = await TransactionsDAO.pegaTodosDados()
+        res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }
     });
 
-    //OK
 
     app.get("/transactions/id/:id", async (req, res) => {
       try {
@@ -25,33 +24,39 @@ class TransactionsController {
       }
     });
 
-    // OK
 
     app.post("/transactions/criar", async (req, res) => {
       try {
         const dados = new TransactionsModel(req.body);
         await Validacoes.reqIsEmpty(dados)
         const resposta = await TransactionsDAO.inserirDados(dados);
-        res.status(resposta.status).json(resposta.resultado);
+        res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }
     });
 
+
     app.put("/transactions/atualizar/id/:id", async (req, res) => {
-      const dados = new TransactionsModel(req.body);
       try {
-        res.json(await TransactionsDAO.atualizarDado(dados, req.params.id));
+        const dados = new TransactionsModel(req.body);
+        await Validacoes.notInBank(await TransactionsDAO.pegaUmDado(req.params.id))
+        await Validacoes.reqIsEmpty(dados)
+        const resposta = await TransactionsDAO.atualizarDado(dados, req.params.id)
+        res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
-        res.json(e);
+        res.status(e.status).json(e.msg);
       }
     });
 
+
     app.delete("/transactions/deletar/id/:id", async (req, res) => {
       try {
-        res.json(await TransactionsDAO.deletaDado(req.params.id));
+        await Validacoes.notInBank(await TransactionsDAO.pegaUmDado(req.params.id))
+        const resposta = await TransactionsDAO.deletaDado(req.params.id)
+        res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
-        res.json(e);
+        res.status(e.status).json(e.msg);
       }
     });
   };
