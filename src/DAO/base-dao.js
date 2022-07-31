@@ -3,8 +3,6 @@ import ErrosModel from "../model/errors-model.js";
 import Validacoes from "../services/valida-base.js";
 
 class DAO {
-
-
   static pegaTodosDados() {
     return new Promise((resolve, reject) => {
       DB.all(this.querySelectAll, (erro, linhas) => {
@@ -14,19 +12,18 @@ class DAO {
           reject(new ErrosModel("Banco de dados vazio", 404));
         } else {
           resolve({
-              resultado: {
-                msg: {
-                  msg:"Aqui estão seus dados",
-                  dados : linhas
-                }
+            resultado: {
+              msg: {
+                msg: "Aqui estão seus dados",
+                dados: linhas,
               },
-              status: 200
-            });
+            },
+            status: 200,
+          });
         }
       });
     });
-  } 
-  
+  }
 
   static pegaUmDado(comparador) {
     return new Promise((resolve, reject) => {
@@ -39,11 +36,11 @@ class DAO {
           resolve({
             resultado: {
               msg: {
-                msg:"Aqui estão seus dados",
-                dados : linhas
-              }
+                msg: "Aqui estão seus dados",
+                dados: linhas,
+              },
             },
-            status: 200
+            status: 200,
           });
         }
       });
@@ -55,15 +52,15 @@ class DAO {
       DB.run(this.queryInsert, ...Object.values(dados), (erro) => {
         if (erro) {
           reject(new ErrosModel("Erro desconhecido", 500, erro));
-        }  else {
+        } else {
           resolve({
             resultado: {
               msg: {
-                msg:"dados inseridos com sucesso",
-                dados : dados
-              }
+                msg: "dados inseridos com sucesso",
+                dados: dados,
+              },
             },
-            status: 201
+            status: 201,
           });
         }
       });
@@ -79,10 +76,10 @@ class DAO {
           resolve({
             resultado: {
               msg: {
-                msg: "Dados atualizados com sucesso"
-              }
+                msg: "Dados atualizados com sucesso",
+              },
             },
-            status: 202
+            status: 202,
           });
         }
       });
@@ -98,10 +95,10 @@ class DAO {
           resolve({
             resultado: {
               msg: {
-                msg: `Dados deletados com sucesso onde ${this.paramDel} = ${parametro}`
-              }
+                msg: `Dados deletados com sucesso onde ${this.paramDel} = ${parametro}`,
+              },
             },
-            status: 202
+            status: 202,
           });
         }
       });
