@@ -1,7 +1,7 @@
 class CardapioModel {
-    constructor(produto, valor) {
-        this.produto = produto;
-        this.valor = valor;
+    constructor(requisicao) {
+        this.produto = requisicao.produto;
+        this.valor = requisicao.valor;
     }
 }
 
