@@ -1,8 +1,8 @@
 class TransacaoModel {
-  constructor(funcionario, produtos, valorCompra) {
-    this.funcionario = funcionario;
-    this.produtos = produtos;
-    this.valorCompra = valorCompra;
+  constructor(dados) {
+    this.funcionario = dados.funcionario
+    this.produtos = dados.produtos
+    this.valorCompra = dados.valorCompra
     this.data = new Date()
   }
 }
