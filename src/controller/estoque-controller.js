@@ -1,11 +1,16 @@
-import { Database } from "../DAO/estoque-dao.js";
-
+import estoqueDAO from "../DAO/estoque-dao.js";
+import estoqueModel from "../Model/estoque-model.js";
 
 
 class Estoque {
     static estoque(app){
     app.get('/estoque',(req,res)=>{
-    res.send();
+    try{
+        res.json(estoqueDAO.pegaTodosUsuarios())
+    }
+    catch(e){
+        res.json(error)
+    }
 })
     app.get('/estoque/:id',(req,res)=>{
          
