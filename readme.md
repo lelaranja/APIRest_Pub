@@ -185,7 +185,7 @@ npm test
 			"produto": "cerveja, destilado"
 		}
     ```
- * __POST /suppliers/criar__
+ * __POST /suppliers__
 
     Esquema da requisição
     ```json
@@ -210,7 +210,7 @@ npm test
     }
     ```
 
-* __PUT /suppliers/atualizar/cnpj/:cnpj__
+* __PUT /suppliers/cnpj/:cnpj__
 
     Esquema da requisição
     ```json
@@ -229,7 +229,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/deletar/cnpj/:cnpj__
+* __DELETE  /suppliers/cnpj/:cnpj__
 
     Esquema da resposta
     ```json
@@ -271,7 +271,7 @@ npm test
 		}
 	}
     ```
- * __POST /transactions/criar__
+ * __POST /transactions__
 
     Esquema da requisição
     ```json
@@ -296,7 +296,7 @@ npm test
 	}
     ```
 
-* __PUT /transactions/atualizar/id/:id__
+* __PUT /transactions/id/:id__
 
     Esquema da requisição
     ```json
@@ -315,7 +315,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/deletar/id/:id__
+* __DELETE  /suppliers/id/:id__
 
     Esquema da resposta
     ```json
