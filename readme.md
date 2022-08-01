@@ -63,11 +63,17 @@ npm test
 
 ### Cliente
 
+<h4 align="center">⚠️Em construção</h4>
+
 ### Funcionário
+
+<h4 align="center">⚠️Em construção</h4>
 
 ### Cardápio
 
 ### Estoque
+
+<h4 align="center">⚠️Em construção</h4>
 
 ### Fornecedor
  * __GET  /suppliers__
@@ -101,7 +107,7 @@ npm test
 			"produto": "cerveja, destilado"
 		}
     ```
- * __POST /suppliers__
+ * __POST /suppliers/criar__
 
     Esquema da requisição
     ```json
@@ -126,7 +132,7 @@ npm test
     }
     ```
 
-* __PUT /suppliers/cnpj/:cnpj__
+* __PUT /suppliers/atualizar/cnpj/:cnpj__
 
     Esquema da requisição
     ```json
@@ -145,7 +151,7 @@ npm test
     }
     ```
     
-    * __DELETE  /suppliers/cnpj/:cnpj__
+* __DELETE  /suppliers/deletar/cnpj/:cnpj__
 
     Esquema da resposta
     ```json
@@ -154,7 +160,91 @@ npm test
    }
    
 ### Transação
+ * __GET  /transactions__
 
+    Esquema da resposta
+    ```json
+ {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"funcionario": "Kleber Knob",
+			"produtos": "Drink de fogo, Caninha da serra, Batata gourmet",
+			"valorCompra": 1400,
+			"data": "10/04/2022"
+		}
+    ```
+
+* __GET  /transactions/id/:id__
+
+    Esquema da resposta
+    ```json
+	 {
+		"msg": {
+			"msg": "Aqui estão seus dados",
+			"dados": {
+				"id": 1,
+				"funcionario": "Kleberr Knob",
+				"produtos": "Drink de fogo, Caninha da serra, Batata gourmet",
+				"valorCompra": 1400,
+				"data": "10/04/2022"
+			}
+		}
+	}
+    ```
+ * __POST /transactions/criar__
+
+    Esquema da requisição
+    ```json
+   	{
+		"funcionario": "Anakin Skywalker",
+		"produtos": "Cerveja 600ml, porção de calabresa, amendoim 60g",
+		"valorCompra": 80,
+		"data": "22/05/2022"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+   	{
+		"msg": "dados inseridos com sucesso",
+		"dados": {
+			"funcionario": "Anakin Skywalker",
+			"produtos": "Cerveja 600ml, porção de calabresa, amendoim 60g",
+			"valorCompra": 80,
+			"data": "2022-08-01T15:27:41.465Z"
+		}
+	}
+    ```
+
+* __PUT /transactions/atualizar/id/:id__
+
+    Esquema da requisição
+    ```json
+   	{
+		"funcionario": "Anakin Skywalker",
+		"produtos": "Cerveja 600ml, porção de calabresa",
+		"valorCompra": 70,
+		"data": "22/05/2022"
+	}
+     ```
+
+    Esquema da resposta
+    ```json
+    {
+	    "msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /suppliers/deletar/id/:id__
+
+    Esquema da resposta
+    ```json
+  {
+	"msg": "Dados deletados com sucesso onde ID = 4"
+  }
+     ```
 
  ### ERROS GERAIS
    Esquema da resposta
