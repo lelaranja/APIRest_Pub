@@ -6,9 +6,6 @@ import cors from "cors";
 const port = 3000;
 const app = express();
 
-//IMPORTAÇÃO MIDDLEWARE - SUPPLIERS
-import autenticacaoSupplier from "./middleware/valida-header_fornecedor.js";
-
 app.use(cors());
 app.use(express.json());
 
