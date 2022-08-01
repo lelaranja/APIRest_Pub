@@ -315,7 +315,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/id/:id__
+* __DELETE  /transactions/id/:id__
 
     Esquema da resposta
     ```json
