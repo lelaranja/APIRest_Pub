@@ -18,8 +18,8 @@ const ADD_SUPPLIERS_DATA = `
 INSERT INTO SUPPLIERS (nome,telefone,cnpj,produto)
 VALUES 
     ('Friboi', '1145236984', '12345678956', 'carne'),
-    ('AMBEV', '1145236984', '12345678956', 'cerveja, destilado'),
-    ('Melhoramentos', '1145236984', '12345678956', 'papel toalha, guardanapo')
+    ('AMBEV', '1145236984', '34598628901', 'cerveja, destilado'),
+    ('Melhoramentos', '1145236984', '234098567234', 'papel toalha, guardanapo')
 `;
 
 const criaTabelaSuppliers = () => {
