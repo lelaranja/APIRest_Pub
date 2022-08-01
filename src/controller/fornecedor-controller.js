@@ -1,6 +1,6 @@
 import SuppliersDAO from "../DAO/fornecedor-dao.js";
 import SuppliersModel from "../model/fornecedor-model.js";
-import Validacoes from "../services/valida-base.js";
+import Validacoes from "../services/validacoes.js";
 
 class SuppliersController {
   static routes = (app) => {
