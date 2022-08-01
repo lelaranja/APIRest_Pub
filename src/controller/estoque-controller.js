@@ -3,7 +3,7 @@ import estoqueModel from "../Model/estoque-model.js";
 
 
 class Estoque {
-    static estoque(app){
+    static routes(app){
     app.get('/estoque',(req,res)=>{
     try{
         res.json(estoqueDAO.pegaTodosUsuarios())
