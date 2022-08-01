@@ -15,7 +15,7 @@ class TransactionsController {
         const resposta = await TransactionsDAO.pegaUmDado(req.params.id);
         res.status(resposta.status).json(resposta.dados)
       } catch (e) {
-        res.status(resposta.status).json(resposta.msg);
+        res.status(e.status).json(e.msg);
       }
     });
 

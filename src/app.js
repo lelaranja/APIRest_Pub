@@ -1,4 +1,5 @@
 import express from "express";
+import StaffControllers from "./controller/funcionario-controller.js";
 import TransactionsController from "./controller/transacao-controller.js";
 
 const port = 3000;
@@ -11,3 +12,4 @@ app.listen(port, () =>{
 })
 
 TransactionsController.routes(app);
+StaffControllers.routes(app);
