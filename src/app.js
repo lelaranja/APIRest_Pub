@@ -12,8 +12,6 @@ import autenticacaoSupplier from "./middleware/valida-header_fornecedor.js";
 app.use(cors());
 app.use(express.json());
 
-autenticacaoSupplier(app);
-
 app.listen(port, () => {
   console.log(`Server online, address: http://localhost:${port}`);
 });
