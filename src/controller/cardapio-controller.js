@@ -20,7 +20,7 @@ class MenuController {
                 res.status(error.status).json(error.msg)
             }
         });
-        app.post("/menu/criar", async (req, res) => {
+        app.post("/menu", async (req, res) => {
             try {
                 const dados = new MenuModel(req.body);
                 await Validacoes.reqIsEmpty(dados)
@@ -30,7 +30,7 @@ class MenuController {
                 res.status(error.status).json(error.msg);
             }
         });
-        app.put("/menu/atualizar/produto/:produto", async (req, res) => {
+        app.put("/menu/produto/:produto", async (req, res) => {
             try {
                 const dados = new MenuModel(req.body);
                 await Validacoes.notInBank(await MenuDAO.pegaUmDado(req.params.produto))
@@ -41,7 +41,7 @@ class MenuController {
                 res.status(error.status).json(error.msg);
             }
         });
-        app.delete("/menu/deletar/produto/:produto", async (req, res) => {
+        app.delete("/menu/produto/:produto", async (req, res) => {
             try {
                 await Validacoes.notInBank(await MenuDAO.pegaUmDado(req.params.produto))
                 const resposta = await MenuDAO.deletaDado(req.params.produto)

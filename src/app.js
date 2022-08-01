@@ -17,3 +17,5 @@ app.listen(port, () =>{
 
 TransactionsController.routes(app);
 MenuController.routes(app)
+
+export default app
