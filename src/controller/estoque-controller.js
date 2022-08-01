@@ -8,7 +8,7 @@ class Estoque {
     res.send();
 })
     app.get('/estoque/:id',(req,res)=>{
-        
+         
     })
     app.get('/estoque/:fabricante',(req,res)=>{
 
