@@ -71,6 +71,8 @@ npm test
 
 ### Cardápio
 
+<h4 align="center">⚠️Em construção</h4>
+
 ### Estoque
 
 <h4 align="center">⚠️Em construção</h4>
@@ -80,7 +82,7 @@ npm test
 
     Esquema da resposta
     ```json
-   {
+     {
 	"msg": "Aqui estão seus dados",
 	"dados": [
 		{
@@ -164,9 +166,9 @@ npm test
 
     Esquema da resposta
     ```json
- {
-	"msg": "Aqui estão seus dados",
-	"dados": [
+  	{
+	  "msg": "Aqui estão seus dados",
+	  "dados": [
 		{
 			"id": 1,
 			"funcionario": "Kleber Knob",
