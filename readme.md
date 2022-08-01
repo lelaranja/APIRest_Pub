@@ -70,8 +70,111 @@ npm test
 ### Estoque
 
 ### Fornecedor
+ * __GET  /suppliers__
 
+    Esquema da resposta
+    ```json
+   {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"nome": "Friboi",
+			"telefone": "1145236984",
+			"cnpj": "12345678956",
+			"produto": "carne"
+		}
+    ```
+
+* __GET  /suppliers/cnpj/:cnpj__
+
+    Esquema da resposta
+    ```json
+   {
+	"msg": {
+		"msg": "Aqui estão seus dados",
+		"dados": {
+			"id": 2,
+			"nome": "AMBEV",
+			"telefone": "1145236984",
+			"cnpj": "34598628901",
+			"produto": "cerveja, destilado"
+		}
+    ```
+ * __POST /suppliers__
+
+    Esquema da requisição
+    ```json
+    {
+	    "nome": "Quitanda Fukushima",
+	    "telefone": "1145878156",
+	    "cnpj":"326789123458",
+	    "produto":"vegetais,legumes"
+    }
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	    "msg": "dados inseridos com sucesso",
+	    "dados": {
+		    "nome": "Quitanda Fukushima",
+		    "telefone": "1145878156",
+		    "cnpj": "326789123458",
+		    "produto": "vegetais,legumes"
+	    }
+    }
+    ```
+
+* __PUT /suppliers/cnpj/:cnpj__
+
+    Esquema da requisição
+    ```json
+    {
+	    "nome":"Açougue do Zé",
+	    "telefone": "1145878536",
+	    "cnpj":"456789123451",
+	    "produto":"carne"
+    }
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	    "msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+    * __DELETE  /suppliers/cnpj/:cnpj__
+
+    Esquema da resposta
+    ```json
+   {
+	    "msg": "Dados deletados com sucesso onde CNPJ = 326789123458"
+   }
+   
 ### Transação
+
+
+ ### ERROS GERAIS
+   Esquema da resposta
+    
+  - Busca por dado não cadastrado
+    
+   ```json
+   {
+	    "msg": "Dados não encontrados"
+   }
+   ```
+   
+   - Post com dados faltantes
+    
+  ```json
+  {
+	  "msg": "Parece que faltam alguns dados em sua requisição"
+  }
+  ```
+   
 
 ##  🤓 Desenvolvido por
 
