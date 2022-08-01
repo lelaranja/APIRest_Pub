@@ -7,8 +7,14 @@ class TestMenu extends Test {
         "valor": 21,
         "descricao": "descricao"
     }
+    static putAtt={
+        "produto": "prod",
+        "valor": 22,
+        "descricao": "descricao"
+    }
     static describe = "Testando rotas cardapio"
     static rootPath = "/menu"
+    static paramPath = "/produto/"
 }
 
 TestMenu.test()

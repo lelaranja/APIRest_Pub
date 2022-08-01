@@ -15,7 +15,8 @@ class MenuController {
         app.get("/menu/produto/:produto", async (req, res) => {
             try {
                 const resposta = await MenuDAO.pegaUmDado(req.params.produto);
-                res.status(resposta.status).json(resposta.resultado)
+                console.log(resposta)
+                res.status(resposta.status).json(resposta.resultado.msg)
             } catch (error) {
                 res.status(error.status).json(error.msg)
             }
