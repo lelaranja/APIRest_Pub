@@ -82,7 +82,7 @@ npm test
     <td align="center"><a href="https://github.com/igorsans"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98533716?v=4" width="100px;" alt=""/><br /><sub><b>Igor Santos</b></sub></a><br /><a href="https://github.com/igorsans" title="Igor">🍺</a></td>
      <td align="center"><a href="https://github.com/guimaraesadev"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/101408372?v=4" width="100px;" alt=""/><br /><sub><b>Sabrina Guimarães</b></sub></a><br /><a href="https://github.com/guimaraesadev" title="Sabrina">🍸</a></td>
        <td align="center"><a href="https://github.com/SGErik"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102768866?v=4" width="100px;" alt=""/><br /><sub><b>Erik Souza</b></sub></a><br /><a href="https://github.com/SGErik" title="Erik">🍷</a></td>
-    <td align="center"><a href="https://github.com/willcrvlh"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/101817310?v=4" width="100px;" alt=""/><br /><sub><b>Sabrina Guimarães</b></sub></a><br /><a href="https://github.com/willcrvlh" title="Willian">🧉</a></td>
+    <td align="center"><a href="https://github.com/willcrvlh"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/101817310?v=4" width="100px;" alt=""/><br /><sub><b>Willian Carvalho</b></sub></a><br /><a href="https://github.com/willcrvlh" title="Willian">🧉</a></td>
   </tr>
 
 
