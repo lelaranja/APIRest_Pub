@@ -1,6 +1,6 @@
 import DB from "../database/db-sqlite.js";
 import ErrosModel from "../model/errors-model.js";
-import Validacoes from "../services/valida-base.js";
+import Validacoes from "../services/validacoes.js";
 
 class DAO {
   static pegaTodosDados() {
@@ -79,7 +79,7 @@ class DAO {
                 msg: "Dados atualizados com sucesso",
               },
             },
-            status: 202,
+            status: 200,
           });
         }
       });
@@ -98,7 +98,7 @@ class DAO {
                 msg: `Dados deletados com sucesso onde ${this.paramDel} = ${parametro}`,
               },
             },
-            status: 202,
+            status: 200,
           });
         }
       });

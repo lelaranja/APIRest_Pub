@@ -1,6 +1,6 @@
 import TransactionsDAO from "../DAO/transacao-dao.js";
 import TransactionsModel from "../model/transacao-model.js";
-import Validacoes from "../services/valida-base.js";
+import Validacoes from "../services/validacoes.js";
 
 class TransactionsController {
   static routes = (app) => {
@@ -18,7 +18,7 @@ class TransactionsController {
     app.get("/transactions/id/:id", async (req, res) => {
       try {
         const resposta = await TransactionsDAO.pegaUmDado(req.params.id);
-        res.status(resposta.status).json(resposta.resultado);
+        res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }

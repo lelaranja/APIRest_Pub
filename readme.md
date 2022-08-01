@@ -70,8 +70,84 @@ npm test
 <h4 align="center">⚠️Em construção</h4>
 
 ### Cardápio
+ * __GET  /menu__
 
-<h4 align="center">⚠️Em construção</h4>
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"produto": "Calabresa acebolada",
+			"valor": 25,
+			"descricao": "Uma porçao de 400 gramas de calabresa com cebola frita"
+		},
+    ```
+
+* __GET  /menu/produto/:produto__
+
+    Esquema da resposta
+    ```json
+	{
+		"msg": "Aqui estão seus dados",
+		"dados": {
+			"id": 1,
+			"produto": "Calabresa acebolada",
+			"valor": 25,
+			"descricao": "Uma porçao de 400 gramas de calabresa com cebola frita"
+		}
+	}
+    ```
+ * __POST /menu__
+
+    Esquema da requisição
+    ```json
+ 	{
+		"produto": "Mojito",
+		"valor": 25,
+		"descricao": "coquetel à base de rum branco originário de Cuba"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+  	{
+	  "msg": "dados inseridos com sucesso",
+	  "dados": {
+		"produto": "Mojito",
+		"valor": 25,
+		"descricao": "coquetel à base de rum branco originário de Cuba"
+		}
+	}
+    ```
+
+* __PUT /menu/produto/:produto__
+
+    Esquema da requisição
+    ```json
+    	{
+		"produto": "Tequila",
+		"valor": 15,
+		"descricao": "Dose de 10 ml da Tequila José Cuervo"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /menu/produto/:produto__
+
+    Esquema da resposta
+    ```json
+   {
+	"msg": "Dados deletados com sucesso onde produto = Tequila"
+   }
+   ```
 
 ### Estoque
 
@@ -109,7 +185,7 @@ npm test
 			"produto": "cerveja, destilado"
 		}
     ```
- * __POST /suppliers/criar__
+ * __POST /suppliers__
 
     Esquema da requisição
     ```json
@@ -134,7 +210,7 @@ npm test
     }
     ```
 
-* __PUT /suppliers/atualizar/cnpj/:cnpj__
+* __PUT /suppliers/cnpj/:cnpj__
 
     Esquema da requisição
     ```json
@@ -153,7 +229,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/deletar/cnpj/:cnpj__
+* __DELETE  /suppliers/cnpj/:cnpj__
 
     Esquema da resposta
     ```json
@@ -195,7 +271,7 @@ npm test
 		}
 	}
     ```
- * __POST /transactions/criar__
+ * __POST /transactions__
 
     Esquema da requisição
     ```json
@@ -220,7 +296,7 @@ npm test
 	}
     ```
 
-* __PUT /transactions/atualizar/id/:id__
+* __PUT /transactions/id/:id__
 
     Esquema da requisição
     ```json
@@ -239,7 +315,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/deletar/id/:id__
+* __DELETE  /suppliers/id/:id__
 
     Esquema da resposta
     ```json
@@ -266,7 +342,20 @@ npm test
 	  "msg": "Parece que faltam alguns dados em sua requisição"
   }
   ```
-   
+  
+  - Post/Put com user diferente de "admin" ou "sub"
+  ```json
+    {
+	"msg": "Usuario não autenticado"
+    }
+  ```
+  
+   - Delete com user diferente de "admin"
+  ```json
+    {
+	"msg": "Usuario não autenticado"
+    }
+  ```
 
 ##  🤓 Desenvolvido por
 

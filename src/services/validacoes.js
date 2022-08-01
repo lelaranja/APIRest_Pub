@@ -9,7 +9,7 @@ class Validacoes {
   static reqIsEmpty(dados){
     return new Promise((resolve, reject) => {
         if(!this.someDataIsEmpty(dados)){
-            reject(new ErrosModel ("Parece que faltam alguns dados em sua requisição", 401))
+            reject(new ErrosModel ("Parece que faltam alguns dados em sua requisição", 400))
         } else {
             resolve()
         }
@@ -29,7 +29,6 @@ class Validacoes {
     return new Promise((resolve,reject) => {
       if (dados.status === 404) reject()
       else resolve()
-
     })
   }
 }

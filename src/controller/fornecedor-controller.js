@@ -1,6 +1,6 @@
 import SuppliersDAO from "../DAO/fornecedor-dao.js";
 import SuppliersModel from "../model/fornecedor-model.js";
-import Validacoes from "../services/valida-base.js";
+import Validacoes from "../services/validacoes.js";
 
 class SuppliersController {
   static routes = (app) => {
@@ -22,7 +22,7 @@ class SuppliersController {
       }
     });
 
-    app.post("/suppliers/criar", async (req, res) => {
+    app.post("/suppliers", async (req, res) => {
       try {
         const dados = new SuppliersModel(req.body);
         await Validacoes.reqIsEmpty(dados);
@@ -33,7 +33,7 @@ class SuppliersController {
       }
     });
 
-    app.put("/suppliers/atualizar/cnpj/:cnpj", async (req, res) => {
+    app.put("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
         const dados = new SuppliersModel(req.body);
         await Validacoes.notInBank(
@@ -50,7 +50,7 @@ class SuppliersController {
       }
     });
 
-    app.delete("/suppliers/deletar/cnpj/:cnpj", async (req, res) => {
+    app.delete("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
         await Validacoes.notInBank(
           await SuppliersDAO.pegaUmDado(req.params.cnpj)
