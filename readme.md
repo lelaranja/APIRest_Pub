@@ -70,8 +70,84 @@ npm test
 <h4 align="center">⚠️Em construção</h4>
 
 ### Cardápio
+ * __GET  /menu__
 
-<h4 align="center">⚠️Em construção</h4>
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"produto": "Calabresa acebolada",
+			"valor": 25,
+			"descricao": "Uma porçao de 400 gramas de calabresa com cebola frita"
+		},
+    ```
+
+* __GET  /menu/produto/:produto__
+
+    Esquema da resposta
+    ```json
+	{
+		"msg": "Aqui estão seus dados",
+		"dados": {
+			"id": 1,
+			"produto": "Calabresa acebolada",
+			"valor": 25,
+			"descricao": "Uma porçao de 400 gramas de calabresa com cebola frita"
+		}
+	}
+    ```
+ * __POST /menu__
+
+    Esquema da requisição
+    ```json
+ 	{
+		"produto": "Mojito",
+		"valor": 25,
+		"descricao": "coquetel à base de rum branco originário de Cuba"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+  	{
+	  "msg": "dados inseridos com sucesso",
+	  "dados": {
+		"produto": "Mojito",
+		"valor": 25,
+		"descricao": "coquetel à base de rum branco originário de Cuba"
+		}
+	}
+    ```
+
+* __PUT /menu/produto/:produto__
+
+    Esquema da requisição
+    ```json
+    	{
+		"produto": "Tequila",
+		"valor": 15,
+		"descricao": "Dose de 10 ml da Tequila José Cuervo"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /menu/produto/:produto__
+
+    Esquema da resposta
+    ```json
+   {
+	"msg": "Dados deletados com sucesso onde produto = Tequila"
+   }
+   ```
 
 ### Estoque
 
@@ -266,7 +342,20 @@ npm test
 	  "msg": "Parece que faltam alguns dados em sua requisição"
   }
   ```
-   
+  
+  - Post/Put com user diferente de "admin" ou "sub"
+  ```json
+    {
+	"msg": "Usuario não autenticado"
+    }
+  ```
+  
+    - Delete com user diferente de "admin"
+  ```json
+    {
+	"msg": "Usuario não autenticado"
+    }
+  ```
 
 ##  🤓 Desenvolvido por
 
