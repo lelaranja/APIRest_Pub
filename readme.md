@@ -350,7 +350,7 @@ npm test
     }
   ```
   
-    - Delete com user diferente de "admin"
+   - Delete com user diferente de "admin"
   ```json
     {
 	"msg": "Usuario não autenticado"
