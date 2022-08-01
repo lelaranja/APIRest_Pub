@@ -1,6 +1,6 @@
 import MenuDAO from "../DAO/cardapio-dao.js"
 import MenuModel from "../model/cardapio-model.js"
-import Validacoes from "../services/valida-base.js";
+import Validacoes from "../services/validacoes.js";
 
 class MenuController {
     static routes = (app) => {
