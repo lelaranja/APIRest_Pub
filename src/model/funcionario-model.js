@@ -1,8 +1,8 @@
 class StaffModel {
-    constructor(nome, cpf, datadenascimento){
-        this.nome = nome
-        this.cpf = cpf 
-        this.datadenascimento = datadenascimento
+    constructor(dados){
+        this.nome = dados.nome
+        this.cpf = dados.cpf 
+        this.datadenascimento = dados.datadenascimento
     }
 
 }
