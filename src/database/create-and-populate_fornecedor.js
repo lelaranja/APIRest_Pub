@@ -24,20 +24,20 @@ VALUES
 `;
 
   static criaTabelaSuppliers() {
-    db.run(SUPPLIERS_SCHEMA, (e) => {
+    db.run(this.SUPPLIERS_SCHEMA, (e) => {
       if (e) console.log(e);
       else console.log("Tabela criada com sucesso");
     });
   }
 
   static populaTabelaSuppliers() {
-    db.run(ADD_SUPPLIERS_DATA, (e) => {
+    db.run(this.ADD_SUPPLIERS_DATA, (e) => {
       if (e) console.log(e);
       else console.log("Tabela populada com sucesso!");
     });
   }
 
-  static SuppliersSerialize() {
+  static suppliersSerialize() {
     db.serialize(() => {
       this.criaTabelaSuppliers();
       this.populaTabelaSuppliers();
