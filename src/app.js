@@ -1,5 +1,4 @@
 import express from "express";
-
 import MenuController from "./controller/cardapio-controller.js";
 import estoqueController from "./controller/estoque-controller.js";
 import cors from "cors";
