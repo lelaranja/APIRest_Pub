@@ -6,13 +6,14 @@ class UnitTests extends Scenarios {
       let i = 0;
       do {
         test(this.scenario[0].msg[i], () => {
-            expect(() => Validacoes.isEmpty(this.scenario[0].dados[i])).toBeTruthy()
-          });
-          console.log(this.scenario[0].dados[i])
-          i++;
-          } while (i < 3);
-      });
-    };
+          expect(() =>
+            Validacoes.isEmpty(this.scenario[0].dados[i])
+          ).toBeTruthy();
+        });
+        i++;
+      } while (i < 3);
+    });
   }
+}
 
 UnitTests.test();

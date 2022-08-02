@@ -24,17 +24,6 @@ class TestTransactions extends Test {
     static setDados(dados){
         this.expect = dados.id
     }
-    static getParam(){
-        return this.param
-    }
-    static getParamAtt(){
-        return this.paramAtt
-    }
-    static nextTestPossible(){
-        this.param = this.param + 1
-        this.paramAtt = this.paramAtt + 1 
-    }
 }
 
 TestTransactions.test()
-TestTransactions.nextTestPossible()
