@@ -1,12 +1,18 @@
-// import Validacoes from "../../src/services/validacoes.js";
-// class TestsUnitarios {
-//   static test() {
-//     describe("Verifica se o usuario é valido", () => {
-//       test("dados estão vazios", () => {
-//         expect(() =>
-//           Validacoes.isEmpty()
-//         ).toThrow("A senha precisa ter 6 ou mais caracteres");
-//       });
-//     });
-//   }
-// }
+import Validacoes from "../../src/services/validacoes.js";
+import Scenarios from "./scenarios.js";
+class UnitTests extends Scenarios {
+  static test() {
+    describe("Verifica se o dado está vazio ou não", () => {
+      let i = 0;
+      do {
+        test(this.scenario[0].msg[i], () => {
+            expect(() => Validacoes.isEmpty(this.scenario[0].dados[i])).toBeTruthy()
+          });
+          console.log(this.scenario[0].dados[i])
+          i++;
+          } while (i < 3);
+      });
+    };
+  }
+
+UnitTests.test();

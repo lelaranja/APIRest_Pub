@@ -25,7 +25,7 @@ class TransactionsController {
     });
 
 
-    app.post("/transactions/criar", async (req, res) => {
+    app.post("/transactions", async (req, res) => {
       try {
         const dados = new TransactionsModel(req.body);
         await Validacoes.reqIsEmpty(dados)
@@ -37,7 +37,7 @@ class TransactionsController {
     });
 
 
-    app.put("/transactions/atualizar/id/:id", async (req, res) => {
+    app.put("/transactions/id/:id", async (req, res) => {
       try {
         const dados = new TransactionsModel(req.body);
         await Validacoes.notInBank(await TransactionsDAO.pegaUmDado(req.params.id))
@@ -50,7 +50,7 @@ class TransactionsController {
     });
 
 
-    app.delete("/transactions/deletar/id/:id", async (req, res) => {
+    app.delete("/transactions/id/:id", async (req, res) => {
       try {
         await Validacoes.notInBank(await TransactionsDAO.pegaUmDado(req.params.id))
         const resposta = await TransactionsDAO.deletaDado(req.params.id)
