@@ -1,5 +1,5 @@
 import ClientDAO from "../DAO/cliente-dao.js"
-import ClienteModel from "../model/cliente-model.js"
+import ClientModel from "../model/cliente-model.js"
 import Validacoes from "../services/validacoes.js";
 
 class ClientController {
@@ -23,7 +23,7 @@ class ClientController {
         app.post("/client", async (req, res) => {
             console.log(req)
             try {
-                const dados = new ClienteModel(req.body);
+                const dados = new ClientModel(req.body);
                 // console.log(dados)
                 await Validacoes.reqIsEmpty(dados)
                 const resposta = await ClientDAO.inserirDados(dados);
