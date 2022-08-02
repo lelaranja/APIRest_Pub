@@ -7,7 +7,7 @@ class TransactionsController {
 
     app.get("/transactions", async (req, res) => {
       try {
-        const resposta = await TransactionsDAO.pegaTodosDados()
+        const resposta = await TransactionsDAO.pickAllData()
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
@@ -17,7 +17,7 @@ class TransactionsController {
 
     app.get("/transactions/id/:id", async (req, res) => {
       try {
-        const resposta = await TransactionsDAO.pegaUmDado(req.params.id);
+        const resposta = await TransactionsDAO.dataPickOne(req.params.id);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
@@ -29,7 +29,7 @@ class TransactionsController {
       try {
         const dados = new TransactionsModel(req.body);
         await Validacoes.reqIsEmpty(dados)
-        const resposta = await TransactionsDAO.inserirDados(dados);
+        const resposta = await TransactionsDAO.insertData(dados);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
@@ -40,9 +40,9 @@ class TransactionsController {
     app.put("/transactions/id/:id", async (req, res) => {
       try {
         const dados = new TransactionsModel(req.body);
-        await Validacoes.notInBank(await TransactionsDAO.pegaUmDado(req.params.id))
+        await Validacoes.notInBank(await TransactionsDAO.dataPickOne(req.params.id))
         await Validacoes.reqIsEmpty(dados)
-        const resposta = await TransactionsDAO.atualizarDado(dados, req.params.id)
+        const resposta = await TransactionsDAO.attData(dados, req.params.id)
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
@@ -52,8 +52,8 @@ class TransactionsController {
 
     app.delete("/transactions/id/:id", async (req, res) => {
       try {
-        await Validacoes.notInBank(await TransactionsDAO.pegaUmDado(req.params.id))
-        const resposta = await TransactionsDAO.deletaDado(req.params.id)
+        await Validacoes.notInBank(await TransactionsDAO.dataPickOne(req.params.id))
+        const resposta = await TransactionsDAO.delData(req.params.id)
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
