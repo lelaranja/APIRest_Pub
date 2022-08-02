@@ -5,22 +5,31 @@ sqlite3.verbose();
 const filePath = dirname(fileURLToPath(import.meta.url)) + "/database.db";
 const db = new sqlite3.Database(filePath);
 
+<<<<<<< HEAD
+const TRANSACTIONS_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
+=======
 class TransactionsDb {
   static TRANSACTIONS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "TRANSACTIONS" (
+>>>>>>> e74c679923d927fb726c06a9a568036b8badde2a
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "funcionario" varchar(64),
-    "produtos" varchar(64),
-    "valorCompra" int,
-    "data" date
+    "nome" varchar(64),
+    "cpf" varchar(64),
+    "datadenascimento" date
   );`;
 
+<<<<<<< HEAD
+const ADD_TRANSACTIONS_DATA = `
+INSERT INTO FUNCIONARIOS (nome,cpf,datadenascimento)
+=======
   static ADD_TRANSACTIONS_DATA = `
 INSERT INTO TRANSACTIONS (funcionario,produtos,valorCompra,data)
+>>>>>>> e74c679923d927fb726c06a9a568036b8badde2a
 VALUES 
-    ('Kleberr Knob', 'Drink de fogo, Caninha da serra, Batata gourmet', 1400, '10/04/2022'),
-    ('Kleberr Knob', 'Caninha da serra, Shot de ices', 3000, '10/04/2022'),
-    ('Flavio Mustang', 'Drink de fogo, Canitina da roça,Hamburguer gourmet', 5000, '11/04/2022')
+    ('Jacinto Ferreira', '72527649076', '23/03/2022'),
+    ('Neolasco Comodoro', '80600034020', '31/11/2022'),
+    ('Leovegildo Moura', '965.100.500-99', '17/08/2022')
 `;
 
   static criaTabelaTransactions() {
