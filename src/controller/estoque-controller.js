@@ -14,14 +14,7 @@ class EstoqueController {
             res.status(error.status).json(error.msg)
         }
 })
-    app.get('/estoque/:id',async (req,res)=>{
-        try{
-            const response = await estoqueDAO.pegaUmDado(req.params.id);
-            res.status(response.status).json(response.msg)
-        }catch(error){
-            res.status(error.status).json(error.msg)
-        }
-    })
+    
     app.get('/estoque/:fabricante',(req,res)=>{
         try{
             const response = estoqueDAO.pegaUmDado(req.params.fabricante);
@@ -56,8 +49,38 @@ class EstoqueController {
             res.status(error.status).json(error.msg)
         }
     })
-    app.put('/estoque/:id',(req,res)=>{
-
+    app.put('/estoque/:fabricante',async(req,res)=>{
+        try{
+            const dados = new EstoqueModel(req.body);
+            await Validacoes.notInBank(await EstoqueDao.pegaUmDado(req.params.fabricante))
+            await Validacoes.reqIsEmpty(dados)
+            const response = await EstoqueDao.atualizarDado(dados, req.params.fabricante)
+            res.status(response.status).json(response.resultado.msg)
+        }catch(error){
+            res.status(error.status).json(error.msg)
+        }
+    })
+    app.put('/estoque/:qtdProdutos',async(req,res)=>{
+        try{
+            const dados = new EstoqueModel(req.body);
+            await Validacoes.notInBank(await EstoqueDao.pegaUmDado(req.params.qtdProdutos))
+            await Validacoes.reqIsEmpty(dados)
+            const response = await EstoqueDao.atualizarDado(dados, req.params.qtdProdutos)
+            res.status(response.status).json(response.resultado.msg)
+        }catch(error){
+            res.status(error.status).json(error.msg)
+        }
+    })
+    app.put('/estoque/:nomeProduto',async(req,res)=>{
+        try{
+            const dados = new EstoqueModel(req.body);
+            await Validacoes.notInBank(await EstoqueDao.pegaUmDado(req.params.nomeProduto))
+            await Validacoes.reqIsEmpty(dados)
+            const response = await EstoqueDao.atualizarDado(dados, req.params.nomeProduto)
+            res.status(response.status).json(response.resultado.msg)
+        }catch(error){
+            res.status(error.status).json(error.msg)
+        }
     })
     
  }

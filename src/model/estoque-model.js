@@ -1,6 +1,6 @@
 class EstoqueModel{
     constructor(data){
-        this.id = data.id;
+        this.id = id++;
         this.fabricante = data.fabricante;
         this.qtdProdutos = data.qtdProdutos;
         this.nomeProduto = data.nomeProduto;
