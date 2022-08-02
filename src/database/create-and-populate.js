@@ -1,5 +1,7 @@
-// import TransactionsDb from "./create-and-populate_transacao.js";
-import MenuDb from "./create-and-populate_cardapio.js"
 
-// TransactionsDb.TransactionsSerialize()
-MenuDb.menuSerialize()
+import TransactionsDb from "./create-and-populate_transacao.js";
+import SuppliersDb from "./create-and-populate_fornecedor.js";
+
+TransactionsDb.TransactionsSerialize();
+SuppliersDb.SuppliersSerialize();
+

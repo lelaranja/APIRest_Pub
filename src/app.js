@@ -1,9 +1,14 @@
 import express from "express";
-import SuppliersController from "./controller/fornecedor-controller.js";
+
+import MenuController from "./controller/cardapio-controller.js";
 import estoqueController from "./controller/estoque-controller.js";
 import cors from "cors";
 import autorizacao from "./middleware/valida-header.js";
-import { TransactionsController,MenuController } from "./controller/controller.js";
+import {
+  TransactionsController,
+  SuppliersController,
+} from "./controller/controller.js";
+
 const app = express();
 
 app.use(cors());
