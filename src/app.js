@@ -1,11 +1,13 @@
 import express from "express";
-import MenuController from "./controller/cardapio-controller.js";
-import estoqueController from "./controller/estoque-controller.js";
 import cors from "cors";
 import autorizacao from "./middleware/valida-header.js";
 import {
   TransactionsController,
   SuppliersController,
+  MenuController,
+  ClientController,
+  StorageController,
+  StaffController,
 } from "./controller/controller.js";
 
 const app = express();
@@ -18,6 +20,6 @@ autorizacao.auth(app);
 TransactionsController.routes(app);
 MenuController.routes(app);
 SuppliersController.routes(app);
-estoqueController.routes(app);
+StorageController.routes(app);
 // ClientController.routes(app);
 export default app;
