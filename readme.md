@@ -151,7 +151,25 @@ npm test
 
 ### Estoque
 
-<h4 align="center">⚠️Em construção</h4>
+*__GET /storage__
+
+	Esquema da resposta
+```json
+{
+	"msg": "Aqui estão seus dados",
+	 "dados": [
+        {
+            "id": 1,
+            "fabricante": "Ambev",
+            "qtdProdutos": 150,
+            "nomeProduto": "Antarctica"
+        }
+	 ]
+}
+
+
+
+
 
 ### Fornecedor
  * __GET  /suppliers__
