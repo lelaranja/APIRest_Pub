@@ -1,62 +1,61 @@
 import StaffDAO from "../DAO/funcionario-dao.js";
 import StaffModel from "../model/funcionario-model.js";
+import Validacoes from "../services/validacoes.js";
 
 class StaffControllers {
-    static routes = (app) =>{
-        app.get("/staff", async (req, res)=>{
-            try{
-                res.json(await StaffDAO.pegaTodosDados());
-            } catch (e){
-                res.json(e)
-            }
-        });
-
-        app.get("/staff/nome/:id", async (req, res)=>{
-            try{
-                const resposta = await StaffDAO.pegaUmDado(req.params.id)
-                res.json(resposta)
-            } catch (e){
-                res.json(e)
-            }
-        });
-
-        app.post("/staff/criar", async (req, res)=>{
-            const body = req.body;
-            const dados = new StaffModel(
-                body.nome,
-                body.cpf,
-                body.datadenascimento
-            );
+    static routes = (app) => {
+        app.get("/staff", async (req, res) => {
             try {
-                res.json(await StaffDAO.inserirDados(dados));
-            } catch (e){
-                res.json(e);
-            }
-        });
-
-        app.put("/staff/atualizar/nome/:nome", async (req, res)=>{
-            const body = req.body
-            const dados = new StaffModel(
-                body.nome,
-                body.cpf,
-                body.datadenascimento
-            )
-            try {
-                res.json(await StaffDAO.atualizarDado(dados, req.params.nome))
-            } catch(e){
-                res.json(e)
-            }
-        });
-
-        app.delete("/staff/deletar/nome/:nome", async (req, res)=>{
-            try {
-                res.json(await StaffDAO.deletaDado(req.params.nome))
+                const resposta = await StaffDAO.pegaTodosDados(req.body)
+                res.status(resposta.status).json(resposta.resultado.msg)
             } catch (e) {
-                res.json(e)
+                res.status(e.status).json(e.msg);
+            }
+        });
+
+        app.get("/staff/nome/:nome", async (req, res) => {
+            try {
+                const resposta = await StaffDAO.pegaUmDado(req.params.nome)
+                res.status(resposta.status).json(resposta.resultado.msg)
+            } catch (e) {
+                res.status(e.status).json(e.msg);
+            }
+        });
+
+        app.post("/staff", async (req, res) => {
+            try {
+                const dados = new StaffModel(req.body);
+                await Validacoes.reqIsEmpty(dados)
+                const resposta = await StaffDAO.inserirDados(dados)
+                res.status(resposta.status).json(resposta.resultado.msg);
+            } catch (e) {
+                res.status(e.status).json(e.msg);
+            }
+        });
+
+        app.put("/staff/nome/:nome", async (req, res) => {
+            try {
+                const dados = new StaffModel(req.body);
+                await Validacoes.notInBank(await StaffDAO.pegaUmDado(req.params.nome));
+                await Validacoes.reqIsEmpty(dados)
+                const resposta = await StaffDAO.atualizarDado(dados, req.params.nome);
+                res.status(resposta.status).json(resposta.resultado.msg);
+            } catch (e) {
+                res.status(e.status).json(e.msg);
+            }
+        });
+
+        app.delete("/staff/nome/:nome", async (req, res) => {
+            try {
+                await Validacoes.notInBank(await StaffDAO.pegaUmDado(req.params.nome));
+                const resposta = await StaffDAO.deletaDado(req.params.nome);
+                res.status(resposta.status).json(resposta.resultado.msg)
+            } catch (e) {
+                res.status(e.status).json(e.msg);
             }
         })
-        
-        
+
+
     };
 }
 
