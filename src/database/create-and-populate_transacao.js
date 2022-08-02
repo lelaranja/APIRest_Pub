@@ -6,20 +6,19 @@ const filePath = dirname(fileURLToPath(import.meta.url)) + "/database.db";
 const db = new sqlite3.Database(filePath);
 
 const TRANSACTIONS_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "TRANSACTIONS" (
+CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "funcionario" varchar(64),
-    "produtos" varchar(64),
-    "valorCompra" int,
-    "data" date
+    "nome" varchar(64),
+    "cpf" varchar(64),
+    "datadenascimento" date
   );`;
 
 const ADD_TRANSACTIONS_DATA = `
-INSERT INTO TRANSACTIONS (funcionario,produtos,valorCompra,data)
+INSERT INTO FUNCIONARIOS (nome,cpf,datadenascimento)
 VALUES 
-    ('Kleberr Knob', 'Drink de fogo, Caninha da serra, Batata gourmet', 1400, '10/04/2022'),
-    ('Kleberr Knob', 'Caninha da serra, Shot de ices', 3000, '10/04/2022'),
-    ('Flavio Mustang', 'Drink de fogo, Canitina da roça,Hamburguer gourmet', 5000, '11/04/2022')
+    ('Jacinto Ferreira', '72527649076', '23/03/2022'),
+    ('Neolasco Comodoro', '80600034020', '31/11/2022'),
+    ('Leovegildo Moura', '965.100.500-99', '17/08/2022')
 `;
 
 const criaTabelaTransactions = () => {
