@@ -1,24 +1,15 @@
 import express from "express";
 import MenuController from "./controller/cardapio-controller.js";
-import TransactionsController from "./controller/transacao-controller.js";
 import SuppliersController from "./controller/fornecedor-controller.js";
 import estoqueController from "./controller/estoque-controller.js";
-import StaffControllers from "./controller/funcionario-controller.js";
-import ClientController from "./controller/cliente-controller.js";
-
 import cors from "cors";
 import autorizacao from "./middleware/valida-header.js";
-
-const port = 3000;
+import { TransactionsController } from "./controller/controller.js";
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 autorizacao.auth(app);
-
-app.listen(port, () => {
-  console.log(`Server online, address: http://localhost:${port}`);
-});
 
 StaffControllers.routes(app);
 TransactionsController.routes(app);
