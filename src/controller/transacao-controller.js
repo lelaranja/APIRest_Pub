@@ -9,8 +9,8 @@ class TransactionsController {
       try {
         const resposta = await TransactionsDAO.pickAllData()
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -19,8 +19,8 @@ class TransactionsController {
       try {
         const resposta = await TransactionsDAO.dataPickOne(req.params.id);
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -31,8 +31,8 @@ class TransactionsController {
         await Validacoes.reqIsEmpty(dados)
         const resposta = await TransactionsDAO.insertData(dados);
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -44,8 +44,8 @@ class TransactionsController {
         await Validacoes.reqIsEmpty(dados)
         const resposta = await TransactionsDAO.attData(dados, req.params.id)
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -55,8 +55,8 @@ class TransactionsController {
         await Validacoes.notInBank(await TransactionsDAO.dataPickOne(req.params.id))
         const resposta = await TransactionsDAO.delData(req.params.id)
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
   };
