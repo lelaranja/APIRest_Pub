@@ -25,3 +25,4 @@ class TestMenu extends Test {
 }
 
 TestMenu.test()
+TestMenu.testDel()

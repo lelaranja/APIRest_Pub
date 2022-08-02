@@ -15,7 +15,6 @@ class MenuController {
         app.get("/menu/produto/:produto", async (req, res) => {
             try {
                 const resposta = await MenuDAO.dataPickOne(req.params.produto);
-                console.log(resposta)
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (error) {
                 res.status(error.status).json(error.msg)
