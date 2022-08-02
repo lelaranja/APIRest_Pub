@@ -1,12 +1,12 @@
 import DAO from './base-dao.js';
 
-class EstoqueDao extends DAO{
-    static querySelectorAll = "SELECT * FROM ESTOQUE"
-    static querySelect = "SELECT * FROM ESTOQUE WHERE id = ?"
-    static queryInsert = "INSERT INTO ESTOQUE(id,fabricante,qtdProdutos,nomeProduto) VALUES(?, ?, ?, ?)"
-    static queryUpdate = "UPDATE ESTOQUE SET id = ? fabricante =?, qtdProdutos =?, nomeProduto =?"
-    static queryDelete = "DELETE FROM ESTOQUE WHERE id = ?"
-    static parDel = "id"
+class EstoqueDAO extends DAO{
+    static querySelectAll = "SELECT * FROM STORAGE"
+    static querySelect = "SELECT * FROM STORAGE WHERE nomeProduto = ?"
+    static queryInsert = "INSERT INTO STORAGE(fabricante,qtdProdutos,nomeProduto) VALUES(?, ?, ?)"
+    static queryUpdate = "UPDATE STORAGE SET fabricante =?, qtdProdutos =?, nomeProduto =? WHERE nomeProduto =?"
+    static queryDelete = "DELETE FROM STORAGE WHERE nomeProduto = ?"
+    static parmDel = "nomeProduto"
 }
 
-export default EstoqueDao
+export default EstoqueDAO
