@@ -11,10 +11,10 @@ app.use(cors());
 app.use(express.json());
 autorizacao.auth(app);
 
-StaffControllers.routes(app);
+// StaffControllers.routes(app);
 TransactionsController.routes(app);
 MenuController.routes(app);
 SuppliersController.routes(app);
 estoqueController.routes(app);
-ClientController.routes(app);
+// ClientController.routes(app);
 export default app;
