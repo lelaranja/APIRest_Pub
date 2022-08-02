@@ -25,6 +25,9 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 - <a href="https://expressjs.com/pt-br/">Express</a>
 - <a href="https://www.npmjs.com/package/sqlite3">SQLite</a>
 - <a href="https://nodemon.io/">Nodemon</a>
+- <a href="https://www.npmjs.com/package/jest">Jest</a>
+- <a href="https://www.npmjs.com/package/supertest">Supertest</a>
+- <a href="https://www.npmjs.com/package/cors">Cors</a>
 
 ## 📥 Instalação da aplicação
 Abra o terminal/Powershell e rode os comandos abaixo:
@@ -67,11 +70,165 @@ npm test
 
 ### Funcionário
 
-<h4 align="center">⚠️Em construção</h4>
+* __GET  /staff__
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"nome": "Jacinto Ferreira",
+			"cpf": "72527649076",
+			"datadenascimento": "23/03/2022"
+		},
+    ```
+
+* __GET  /staff/nome/:nome__
+
+    Esquema da resposta
+    ```json
+	{
+	"msg": "Aqui estão seus dados",
+	"dados": {
+		"id": 2,
+		"nome": "Neolasco Comodoro",
+		"cpf": "80600034020",
+		"datadenascimento": "31/11/2022"
+		}
+	}
+    ```
+ * __POST /staff__
+
+    Esquema da requisição
+    ```json
+ 	{
+		"nome": "Rodrigo Erik",
+		"cpf": "34576890234",
+		"datadenascimento": "20/05/1998"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+  	{
+	  "msg": "dados inseridos com sucesso",
+	  "dados": {
+		  "nome": "Rodrigo Erik",
+		  "cpf": "34576890234",
+		  "datadenascimento": "20/05/1998"
+		 }
+	}
+    ```
+
+* __PUT /staff/nome/:nome__
+
+    Esquema da requisição
+    ```json
+    	{
+		"nome": "Willian Igor",
+		"cpf": "40567890234",
+		"datadenascimento": "10/02/1995"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /staff/nome/:nome__
+
+    Esquema da resposta
+    ```json
+    {
+	 "msg": "Dados deletados com sucesso onde nome = Willian Igor"
+    }
+   ```
+
 
 ### Cardápio
+ * __GET  /menu__
 
-<h4 align="center">⚠️Em construção</h4>
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"produto": "Calabresa acebolada",
+			"valor": 25,
+			"descricao": "Uma porçao de 400 gramas de calabresa com cebola frita"
+		},
+    ```
+
+* __GET  /menu/produto/:produto__
+
+    Esquema da resposta
+    ```json
+	{
+		"msg": "Aqui estão seus dados",
+		"dados": {
+			"id": 1,
+			"produto": "Calabresa acebolada",
+			"valor": 25,
+			"descricao": "Uma porçao de 400 gramas de calabresa com cebola frita"
+		}
+	}
+    ```
+ * __POST /menu__
+
+    Esquema da requisição
+    ```json
+ 	{
+		"produto": "Mojito",
+		"valor": 25,
+		"descricao": "coquetel à base de rum branco originário de Cuba"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+  	{
+	  "msg": "dados inseridos com sucesso",
+	  "dados": {
+		"produto": "Mojito",
+		"valor": 25,
+		"descricao": "coquetel à base de rum branco originário de Cuba"
+		}
+	}
+    ```
+
+* __PUT /menu/produto/:produto__
+
+    Esquema da requisição
+    ```json
+    	{
+		"produto": "Tequila",
+		"valor": 15,
+		"descricao": "Dose de 10 ml da Tequila José Cuervo"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /menu/produto/:produto__
+
+    Esquema da resposta
+    ```json
+   {
+	"msg": "Dados deletados com sucesso onde produto = Tequila"
+   }
+   ```
 
 ### Estoque
 
@@ -109,7 +266,7 @@ npm test
 			"produto": "cerveja, destilado"
 		}
     ```
- * __POST /suppliers/criar__
+ * __POST /suppliers__
 
     Esquema da requisição
     ```json
@@ -134,7 +291,7 @@ npm test
     }
     ```
 
-* __PUT /suppliers/atualizar/cnpj/:cnpj__
+* __PUT /suppliers/cnpj/:cnpj__
 
     Esquema da requisição
     ```json
@@ -153,7 +310,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/deletar/cnpj/:cnpj__
+* __DELETE  /suppliers/cnpj/:cnpj__
 
     Esquema da resposta
     ```json
@@ -195,7 +352,7 @@ npm test
 		}
 	}
     ```
- * __POST /transactions/criar__
+ * __POST /transactions__
 
     Esquema da requisição
     ```json
@@ -220,7 +377,7 @@ npm test
 	}
     ```
 
-* __PUT /transactions/atualizar/id/:id__
+* __PUT /transactions/id/:id__
 
     Esquema da requisição
     ```json
@@ -239,7 +396,7 @@ npm test
     }
     ```
     
-* __DELETE  /suppliers/deletar/id/:id__
+* __DELETE  /transactions/id/:id__
 
     Esquema da resposta
     ```json
@@ -266,7 +423,20 @@ npm test
 	  "msg": "Parece que faltam alguns dados em sua requisição"
   }
   ```
-   
+  
+  - Post/Put com user diferente de "admin" ou "sub"
+  ```json
+    {
+	"msg": "Usuario não autenticado"
+    }
+  ```
+  
+   - Delete com user diferente de "admin"
+  ```json
+    {
+	"msg": "Usuario não autenticado"
+    }
+  ```
 
 ##  🤓 Desenvolvido por
 

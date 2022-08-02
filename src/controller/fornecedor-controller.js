@@ -1,12 +1,12 @@
 import SuppliersDAO from "../DAO/fornecedor-dao.js";
 import SuppliersModel from "../model/fornecedor-model.js";
-import Validacoes from "../services/valida-base.js";
+import Validacoes from "../services/validacoes.js";
 
 class SuppliersController {
   static routes = (app) => {
     app.get("/suppliers", async (req, res) => {
       try {
-        const resposta = await SuppliersDAO.pegaTodosDados();
+        const resposta = await SuppliersDAO.pickAllData();
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
@@ -15,32 +15,32 @@ class SuppliersController {
 
     app.get("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
-        const resposta = await SuppliersDAO.pegaUmDado(req.params.cnpj);
+        const resposta = await SuppliersDAO.dataPickOne(req.params.cnpj);
         res.status(resposta.status).json(resposta.resultado);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }
     });
 
-    app.post("/suppliers/criar", async (req, res) => {
+    app.post("/suppliers", async (req, res) => {
       try {
         const dados = new SuppliersModel(req.body);
         await Validacoes.reqIsEmpty(dados);
-        const resposta = await SuppliersDAO.inserirDados(dados);
+        const resposta = await SuppliersDAO.insertData(dados);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }
     });
 
-    app.put("/suppliers/atualizar/cnpj/:cnpj", async (req, res) => {
+    app.put("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
         const dados = new SuppliersModel(req.body);
         await Validacoes.notInBank(
-          await SuppliersDAO.pegaUmDado(req.params.cnpj)
+          await SuppliersDAO.dataPickOne(req.params.cnpj)
         );
         await Validacoes.reqIsEmpty(dados);
-        const resposta = await SuppliersDAO.atualizarDado(
+        const resposta = await SuppliersDAO.attData(
           dados,
           req.params.cnpj
         );
@@ -50,12 +50,12 @@ class SuppliersController {
       }
     });
 
-    app.delete("/suppliers/deletar/cnpj/:cnpj", async (req, res) => {
+    app.delete("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
         await Validacoes.notInBank(
-          await SuppliersDAO.pegaUmDado(req.params.cnpj)
+          await SuppliersDAO.dataPickOne(req.params.cnpj)
         );
-        const resposta = await SuppliersDAO.deletaDado(req.params.cnpj);
+        const resposta = await SuppliersDAO.delData(req.params.cnpj);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
