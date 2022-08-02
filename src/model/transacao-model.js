@@ -3,7 +3,7 @@ class TransacaoModel {
     this.funcionario = dados.funcionario
     this.produtos = dados.produtos
     this.valorCompra = dados.valorCompra
-    this.data = new Date()
+    this.data = `${new Date()}`
   }
 }
 

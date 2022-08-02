@@ -1,5 +1,6 @@
 class Scenarios {
   static scenario = [
+    //scenario 1
     {
       msg: [
         "dados vazios",
@@ -32,6 +33,15 @@ class Scenarios {
         ],
       ],
     },
+    //scenario 2
+    {
+      msg: "teste com dados vazios",
+      dados: {
+          "funcionario" : "Rodolpho",
+          "produtos" : undefined,
+          "valorCompra": 1400
+      }
+    }
   ];
 }
 
