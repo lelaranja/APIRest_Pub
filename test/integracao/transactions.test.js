@@ -8,7 +8,7 @@ class TestTransactions extends Test {
         "produtos" : "Carne",
         "valorCompra": 1400
     }
-    static param = 1
+    static param = 2
     static putAtt= {
         "funcionario" : "Bruno",
         "produtos" : "Figado com cebola",
@@ -18,7 +18,7 @@ class TestTransactions extends Test {
     static describe = "Testando rotas transactions"
     static rootPath = "/transactions"
     static paramPath = "/id/"
-    static paramAtt = 1
+    static paramAtt = 2
 
 
     static setDados(dados){

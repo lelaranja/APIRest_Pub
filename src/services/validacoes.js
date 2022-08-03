@@ -2,7 +2,7 @@ import ErrosModel from "../model/errors-model.js";
 
 class Validacoes {
   static isEmpty(dados) {
-    if ((!dados) || (dados.length <= 0)) return true;
+    if (!dados || dados.length <= 0) return true;
     else return false;
   }
 
@@ -27,17 +27,24 @@ class Validacoes {
 
   static notInBank(dados) {
     return new Promise((resolve, reject) => {
-      if (dados.status === 404) reject()
-      else resolve()
-    })
+      if (dados.status === 404) reject();
+      else resolve();
+    });
   }
-  
-  static isNumber(dados) {    
-      if (typeof dados === "number" || dados instanceof Number) {
-        return true
-      } else {
-        return false
-      }    
+  static isString(dados) {
+    if (typeof dados === "string" || dados instanceof String) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static isNumber(dados) {
+    if (typeof dados === "number" || dados instanceof Number) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 
