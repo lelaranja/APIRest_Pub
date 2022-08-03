@@ -6,7 +6,8 @@ const filePath = dirname(fileURLToPath(
     import.meta.url)) + "/database.db";
 const db = new sqlite3.Database(filePath);
 
-const CLIENT_SCHEMA = `
+class ClientDb {
+static CLIENT_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "CLIENT" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,    
     "nome" varchar(64),
@@ -14,7 +15,7 @@ CREATE TABLE IF NOT EXISTS "CLIENT" (
     "email" varchar(64)
 );`;
 
-const ADD_CLIENT_DATA = `
+static ADD_CLIENT_DATA = `
 INSERT INTO CLIENT (nome,telefone,email)
 VALUES 
     ('Caipirinha', 'string', 'Drink de limão com cachaça 51 e açucar'),
@@ -22,21 +23,26 @@ VALUES
     ('Skol', 'string','Pilsen, 350ml')
 `;
 
-const criaTabelaClient = () => {
-    db.run(CLIENT_SCHEMA, (e) => {
+static criaTabelaClient = () => {
+    db.run(this.CLIENT_SCHEMA, (e) => {
         if (e) console.log(e);
         else console.log("Tabela criada com sucesso");
     });
 };
 
-const populaTabelaClient = () => {
-    db.run(ADD_CLIENT_DATA, (e) => {
+static populaTabelaClient = () => {
+    db.run(this.ADD_CLIENT_DATA, (e) => {
         if (e) console.log(e)
         else console.log("Tabela populada com sucesso!");
     });
 };
+    static clientSerialize() {
+        db.serialize(() => {
+            this.criaTabelaClient();
+            this.populaTabelaClient();
+        });
+        
+}
+}
 
-db.serialize(() => {
-    criaTabelaClient();
-    populaTabelaClient();
-});
+export default ClientDb
