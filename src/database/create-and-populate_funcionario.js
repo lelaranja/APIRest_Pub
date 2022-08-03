@@ -7,14 +7,14 @@ const db = new sqlite3.Database(filePath);
 
 class StaffDb {
   static STAFF_SCHEMA = `
-    CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
+    CREATE TABLE IF NOT EXISTS "STAFF" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "nome" varchar(64),
     "cpf" varchar(64),
     "datadenascimento" date
     );`;
   static ADD_STAFF_DATA = `
-    INSERT INTO FUNCIONARIOS (nome, cpf, datadenascimento)
+    INSERT INTO STAFF (nome, cpf, datadenascimento)
     VALUES 
         ('Leovegildo Moura', '239.123.450-14', '10/04/2000'),
         ('Neolasco Comodoro', '549.192.593-95', '23/09/1992'),

@@ -36,7 +36,15 @@ class UnitTests extends Scenarios {
           expect(Validacoes.isNumber(this.scenario[3].dados[i])).toBe(this.scenario[3].toBe[i])
         })
       }
+    });
+    describe("Verifica o tamanho do dado", () => {
+      for (let i = 0; i < 3; i++) {
+        test(this.scenario[6].msg[i], () => {
+          expect(Validacoes.isNumber(this.scenario[6].dados[i])).toBe(this.scenario[6].toBe[i])
+        })
+      }
     })
+
   }
 }
 

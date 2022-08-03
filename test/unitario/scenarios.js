@@ -73,6 +73,16 @@ class Scenarios {
       ],
       dados: ["5", 5, undefined],
       toBe: [false, true, false]
+    },
+    //scenario 7
+    {
+      msg: [
+        "teste com numeros diferentes de 11",
+        "teste com 11 caracteres",
+        "teste sendo undefined"
+      ],
+      dados: ["3", "11111111111", undefined],
+      toBe: [false, true, false]
     }
   ];
 }

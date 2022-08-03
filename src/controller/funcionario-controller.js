@@ -6,7 +6,7 @@ class StaffControllers {
     static routes = (app) => {
         app.get("/staff", async (req, res) => {
             try {
-                const resposta = await StaffDAO.pickAllData(req.body)
+                const resposta = await StaffDAO.pickAllData()
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (e) {
                 res.status(e.status).json(e.msg);
@@ -24,8 +24,7 @@ class StaffControllers {
 
         app.post("/staff", async (req, res) => {
             try {
-                const dados = new StaffModel(req.body);
-                await Validacoes.reqIsEmpty(dados)
+                const dados = await StaffModel.validateModel(req.body);
                 const resposta = await StaffDAO.insertData(dados)
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (e) {
@@ -35,7 +34,7 @@ class StaffControllers {
 
         app.put("/staff/nome/:nome", async (req, res) => {
             try {
-                const dados = new StaffModel(req.body);
+                const dados = await StaffModel.validateModel(req.body);
                 await Validacoes.notInBank(await StaffDAO.dataPickOne(req.params.nome));
                 await Validacoes.reqIsEmpty(dados)
                 const resposta = await StaffDAO.attData(dados, req.params.nome);

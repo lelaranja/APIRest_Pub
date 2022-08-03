@@ -46,6 +46,14 @@ class Validacoes {
       return false
     }
   }
+
+  static isCpf (dados){
+    if (dados.length === 11){
+      return true
+    }else {
+      return false
+    }
+  }
 }
 
 export default Validacoes;
