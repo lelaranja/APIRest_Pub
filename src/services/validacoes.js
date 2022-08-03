@@ -32,14 +32,12 @@ class Validacoes {
     })
   }
   
-  static onlyNumber(dados) {
-    return new Promise((resolve, reject) => {
-      if (typeof dados === "number") {
-        resolve()
+  static onlyNumber(dados) {    
+      if (typeof dados === "number" || dados instanceof Number) {
+        return true
       } else {
-        reject(new ErrosModel("Insira um dado do tipo number", 400))
-      }
-    })
+        return false
+      }    
   }
 }
 
