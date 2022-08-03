@@ -24,7 +24,7 @@ class UnitTests extends Scenarios {
     describe("Verifica se o dado é um number", () => {
       for(let i=0;i<3;i++){
         test(this.scenario[2].msg[i], () => {
-                expect(Validacoes.onlyNumber(this.scenario[2].dados[i])).toBe(this.scenario[2].toBe[i])
+                expect(Validacoes.isNumber(this.scenario[2].dados[i])).toBe(this.scenario[2].toBe[i])
               })
       }    
     })

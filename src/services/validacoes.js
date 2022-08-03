@@ -32,7 +32,7 @@ class Validacoes {
     })
   }
   
-  static onlyNumber(dados) {    
+  static isNumber(dados) {    
       if (typeof dados === "number" || dados instanceof Number) {
         return true
       } else {

@@ -11,7 +11,7 @@ class CardapioModel {
     static validateModel(dados){
         return new Promise(async(resolve,reject)=>{
             try{
-                if(Validacoes.onlyNumber(dados.valor)){
+                if(Validacoes.isNumber(dados.valor)){
                     const newModel = new CardapioModel(dados)
                     await Validacoes.reqIsEmpty(newModel)
                     resolve(newModel)
