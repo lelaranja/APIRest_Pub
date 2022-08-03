@@ -1,13 +1,12 @@
-import EstoqueDAO from "../DAO/estoque-dao.js";
-import EstoqueModel from "../Model/estoque-model.js";
+import StorageDAO from "../DAO/estoque-dao.js";
+import StorageModel from "../Model/estoque-model.js";
 import Validacoes from "../services/validacoes.js";
 
-class EstoqueController {
+class StorageController {
     static routes(app){
     app.get('/storage', async (req,res)=>{
         try{
-            console.log("to aqui");
-            const dados = await EstoqueDAO.pegaTodosDados()
+            const dados = await StorageDAO.pickAllData()
             res.status(dados.status).json(dados.resultado.msg)
         }catch(error){
             res.status(error.status).json(error.msg)
@@ -15,7 +14,7 @@ class EstoqueController {
 })
     app.get('/storage/nomeProduto/:nomeProduto',async (req,res)=>{
         try{
-            const response = await EstoqueDAO.pegaUmDado(req.params.nomeProduto);
+            const response = await StorageDAO.dataPickOne(req.params.nomeProduto);
             res.status(response.status).json(response.resultado.msg)
         }catch(error){
             res.status(error.status).json(error.msg)
@@ -23,9 +22,8 @@ class EstoqueController {
     })
     app.post('/storage',async (req,res)=>{
         try{
-            const dados = new EstoqueModel(req.body)
-            await Validacoes.reqIsEmpty(dados)
-            const response = await EstoqueDAO.inserirDados(dados)
+            const dados = await StorageModel.ValidateModel(req.body)
+            const response = await StorageDAO.insertData(dados)
             res.status(response.status).json(response.resultado.msg)
         }catch(error){
             res.status(error.status).json(error.msg)
@@ -33,10 +31,9 @@ class EstoqueController {
     })
     app.put('/storage/nomeProduto/:nomeProduto',async(req,res)=>{
         try{
-            const dados = new EstoqueModel(req.body);
-            await Validacoes.notInBank(await EstoqueDAO.pegaUmDado(req.params.nomeProduto))
-            await Validacoes.reqIsEmpty(dados)
-            const response = await EstoqueDAO.atualizarDado(dados, req.params.nomeProduto)
+            const dados = await StorageModel.ValidateModel(req.body);
+            await Validacoes.notInBank(await StorageDAO.dataPickOne(req.params.nomeProduto))
+            const response = await StorageDAO.attData(dados, req.params.nomeProduto)
             res.status(response.status).json(response.resultado.msg)
         }catch(error){
             res.status(error.status).json(error.msg)
@@ -44,8 +41,8 @@ class EstoqueController {
     })
     app.delete("/storage/nomeProduto/:nomeProduto", async (req, res) => {
         try {
-            await Validacoes.notInBank(await EstoqueDAO.pegaUmDado(req.params.nomeProduto))
-            const resposta = await EstoqueDAO.deletaDado(req.params.nomeProduto)
+            await Validacoes.notInBank(await StorageDAO.dataPickOne(req.params.nomeProduto))
+            const resposta = await StorageDAO.delData(req.params.nomeProduto)
             res.status(resposta.status).json(resposta.resultado.msg);
         } catch (error) {
             res.status(error.status).json(error.msg);
@@ -53,4 +50,4 @@ class EstoqueController {
     });
 }
 }
-export default EstoqueController;
+export default StorageController;

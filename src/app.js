@@ -6,7 +6,7 @@ import {
   SuppliersController,
   MenuController,
   ClientController,
-  // StorageController,
+  StorageController,
   // StaffController,
 } from "./controller/controller.js";
 
@@ -20,6 +20,6 @@ autorizacao.auth(app);
 TransactionsController.routes(app);
 MenuController.routes(app);
 SuppliersController.routes(app);
-// StorageController.routes(app);
+StorageController.routes(app);
 ClientController.routes(app);
 export default app;

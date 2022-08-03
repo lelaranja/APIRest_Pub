@@ -37,7 +37,7 @@ class StorageDb{
         });
     };
     
-    static storageSerializer() {
+    static storageSerialize() {
     db.serialize(() => {
         this.criaTabelaStorage();
         this.populaTabelaStorage();
@@ -45,5 +45,5 @@ class StorageDb{
 }
 }
 
-StorageDb.storageSerializer()
+StorageDb.storageSerialize()
 export default StorageDb;
