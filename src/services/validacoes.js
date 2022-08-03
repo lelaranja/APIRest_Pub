@@ -6,13 +6,13 @@ class Validacoes {
     else return false;
   }
 
-  static reqIsEmpty(dados){
+  static reqIsEmpty(dados) {
     return new Promise((resolve, reject) => {
-        if(!this.someDataIsEmpty(dados)){
-            reject(new ErrosModel ("Parece que faltam alguns dados em sua requisição", 400))
-        } else {
-            resolve()
-        }
+      if (!this.someDataIsEmpty(dados)) {
+        reject(new ErrosModel("Parece que faltam alguns dados em sua requisição", 400))
+      } else {
+        resolve()
+      }
     })
   }
 
@@ -25,11 +25,19 @@ class Validacoes {
     });
   }
 
-  static notInBank(dados){
-    return new Promise((resolve,reject) => {
+  static notInBank(dados) {
+    return new Promise((resolve, reject) => {
       if (dados.status === 404) reject()
       else resolve()
     })
+  }
+  
+  static isNumber(dados) {    
+      if (typeof dados === "number" || dados instanceof Number) {
+        return true
+      } else {
+        return false
+      }    
   }
 }
 
