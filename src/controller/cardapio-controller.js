@@ -22,6 +22,7 @@ class MenuController {
         });
         app.post("/menu", async (req, res) => {
             try {
+                await Validacoes.onlyNumber(req.body.valor)
                 const dados = new MenuModel(req.body);
                 await Validacoes.reqIsEmpty(dados)
                 const resposta = await MenuDAO.insertData(dados);
