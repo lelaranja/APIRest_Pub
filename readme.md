@@ -25,6 +25,9 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 - <a href="https://expressjs.com/pt-br/">Express</a>
 - <a href="https://www.npmjs.com/package/sqlite3">SQLite</a>
 - <a href="https://nodemon.io/">Nodemon</a>
+- <a href="https://www.npmjs.com/package/jest">Jest</a>
+- <a href="https://www.npmjs.com/package/supertest">Supertest</a>
+- <a href="https://www.npmjs.com/package/cors">Cors</a>
 
 ## 📥 Instalação da aplicação
 Abra o terminal/Powershell e rode os comandos abaixo:
@@ -67,7 +70,85 @@ npm test
 
 ### Funcionário
 
-<h4 align="center">⚠️Em construção</h4>
+* __GET  /staff__
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"nome": "Jacinto Ferreira",
+			"cpf": "72527649076",
+			"datadenascimento": "23/03/2022"
+		},
+    ```
+
+* __GET  /staff/nome/:nome__
+
+    Esquema da resposta
+    ```json
+	{
+	"msg": "Aqui estão seus dados",
+	"dados": {
+		"id": 2,
+		"nome": "Neolasco Comodoro",
+		"cpf": "80600034020",
+		"datadenascimento": "31/11/2022"
+		}
+	}
+    ```
+ * __POST /staff__
+
+    Esquema da requisição
+    ```json
+ 	{
+		"nome": "Rodrigo Erik",
+		"cpf": "34576890234",
+		"datadenascimento": "20/05/1998"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+  	{
+	  "msg": "dados inseridos com sucesso",
+	  "dados": {
+		  "nome": "Rodrigo Erik",
+		  "cpf": "34576890234",
+		  "datadenascimento": "20/05/1998"
+		 }
+	}
+    ```
+
+* __PUT /staff/nome/:nome__
+
+    Esquema da requisição
+    ```json
+    	{
+		"nome": "Willian Igor",
+		"cpf": "40567890234",
+		"datadenascimento": "10/02/1995"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /staff/nome/:nome__
+
+    Esquema da resposta
+    ```json
+    {
+	 "msg": "Dados deletados com sucesso onde nome = Willian Igor"
+    }
+   ```
+
 
 ### Cardápio
  * __GET  /menu__

@@ -5,37 +5,41 @@ sqlite3.verbose();
 const filePath = dirname(fileURLToPath(import.meta.url)) + "/database.db";
 const db = new sqlite3.Database(filePath);
 
-const TRANSACTIONS_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
+class TransactionsDb {
+  static TRANSACTIONS_SCHEMA = `
+    CREATE TABLE IF NOT EXISTS "TRANSACTIONS" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "nome" varchar(64),
-    "cpf" varchar(64),
-    "datadenascimento" date
-  );`;
+    "funcionario" varchar(64),
+    "valorCompra" varchar(64),
+    "produtos" varchar(64),
+    "data" date
+    );`;
+  static ADD_TRANSACTIONS_DATA = `
+    INSERT INTO TRANSACTIONS (funcionario,produtos,valorCompra,data)
+    VALUES 
+        ('Kleberr Knob', 'Drink de fogo, Caninha da serra, Batata gourmet', 1400, '10/04/2022'),
+        ('Kleberr Knob', 'Caninha da serra, Shot de ices', 3000, '10/04/2022'),
+        ('Flavio Mustang', 'Drink de fogo, Canitina da roça,Hamburguer gourmet', 5000, '11/04/2022')
+    `;
 
-const ADD_TRANSACTIONS_DATA = `
-INSERT INTO FUNCIONARIOS (nome,cpf,datadenascimento)
-VALUES 
-    ('Jacinto Ferreira', '72527649076', '23/03/2022'),
-    ('Neolasco Comodoro', '80600034020', '31/11/2022'),
-    ('Leovegildo Moura', '965.100.500-99', '17/08/2022')
-`;
+  static criaTabelaTransactions() {
+    db.run(this.TRANSACTIONS_SCHEMA, (e) => {
+      if (e) console.log(e);
+      else console.log("Tabela criada com sucesso");
+    });
+  }
+  static populaTabelaTransactions() {
+    db.run(this.ADD_TRANSACTIONS_DATA, (e) => {
+      if (e) console.log(e);
+      else console.log("Tabela populada com sucesso!");
+    });
+  }
+  static transactionsSerialize() {
+    db.serialize(() => {
+      this.criaTabelaTransactions();
+      this.populaTabelaTransactions();
+    });
+  }
+}
 
-const criaTabelaTransactions = () => {
-  db.run(TRANSACTIONS_SCHEMA, (e) => {
-    if (e) console.log(e);
-    else console.log("Tabela criada com sucesso");
-  });
-};
-
-const populaTabelaTransactions = () => {
-  db.run(ADD_TRANSACTIONS_DATA, (e) => {
-    if (e) console.log(e)
-    else console.log("Tabela populada com sucesso!");
-  });
-};
-
-db.serialize(() => {
-  criaTabelaTransactions();
-  populaTabelaTransactions();
-});
+export default TransactionsDb;

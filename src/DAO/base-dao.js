@@ -3,7 +3,7 @@ import ErrosModel from "../model/errors-model.js";
 import Validacoes from "../services/validacoes.js";
 
 class DAO {
-  static pegaTodosDados() {
+  static pickAllData() {
     return new Promise((resolve, reject) => {
       DB.all(this.querySelectAll, (erro, linhas) => {
         if (erro) {
@@ -12,6 +12,7 @@ class DAO {
           reject(new ErrosModel("Banco de dados vazio", 404));
         } else {
           resolve({
+            
             resultado: {
               msg: {
                 msg: "Aqui estão seus dados",
@@ -25,7 +26,7 @@ class DAO {
     });
   }
 
-  static pegaUmDado(comparador) {
+  static dataPickOne(comparador) {
     return new Promise((resolve, reject) => {
       DB.get(this.querySelect, comparador, (erro, linhas) => {
         if (erro) {
@@ -47,7 +48,7 @@ class DAO {
     });
   }
 
-  static inserirDados(dados) {
+  static insertData(dados) {
     return new Promise((resolve, reject) => {
       DB.run(this.queryInsert, ...Object.values(dados), (erro) => {
         if (erro) {
@@ -67,7 +68,7 @@ class DAO {
     });
   }
 
-  static atualizarDado(dados, comparador) {
+  static attData(dados, comparador) {
     return new Promise((resolve, reject) => {
       DB.run(this.queryUpdate, ...Object.values(dados), comparador, (erro) => {
         if (erro) {
@@ -86,7 +87,7 @@ class DAO {
     });
   }
 
-  static deletaDado(parametro) {
+  static delData(parametro) {
     return new Promise((resolve, reject) => {
       DB.run(this.queryDelete, parametro, (erro) => {
         if (erro) {
