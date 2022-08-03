@@ -6,7 +6,7 @@ class StaffControllers {
     static routes = (app) => {
         app.get("/staff", async (req, res) => {
             try {
-                const resposta = await StaffDAO.pegaTodosDados(req.body)
+                const resposta = await StaffDAO.pickAllData(req.body)
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (e) {
                 res.status(e.status).json(e.msg);
@@ -15,7 +15,7 @@ class StaffControllers {
 
         app.get("/staff/nome/:nome", async (req, res) => {
             try {
-                const resposta = await StaffDAO.pegaUmDado(req.params.nome)
+                const resposta = await StaffDAO.dataPickOne(req.params.nome)
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (e) {
                 res.status(e.status).json(e.msg);
@@ -26,7 +26,7 @@ class StaffControllers {
             try {
                 const dados = new StaffModel(req.body);
                 await Validacoes.reqIsEmpty(dados)
-                const resposta = await StaffDAO.inserirDados(dados)
+                const resposta = await StaffDAO.insertData(dados)
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (e) {
                 res.status(e.status).json(e.msg);
@@ -36,9 +36,9 @@ class StaffControllers {
         app.put("/staff/nome/:nome", async (req, res) => {
             try {
                 const dados = new StaffModel(req.body);
-                await Validacoes.notInBank(await StaffDAO.pegaUmDado(req.params.nome));
+                await Validacoes.notInBank(await StaffDAO.dataPickOne(req.params.nome));
                 await Validacoes.reqIsEmpty(dados)
-                const resposta = await StaffDAO.atualizarDado(dados, req.params.nome);
+                const resposta = await StaffDAO.attData(dados, req.params.nome);
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (e) {
                 res.status(e.status).json(e.msg);
@@ -47,8 +47,8 @@ class StaffControllers {
 
         app.delete("/staff/nome/:nome", async (req, res) => {
             try {
-                await Validacoes.notInBank(await StaffDAO.pegaUmDado(req.params.nome));
-                const resposta = await StaffDAO.deletaDado(req.params.nome);
+                await Validacoes.notInBank(await StaffDAO.dataPickOne(req.params.nome));
+                const resposta = await StaffDAO.delData(req.params.nome);
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (e) {
                 res.status(e.status).json(e.msg);
