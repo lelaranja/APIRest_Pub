@@ -27,8 +27,7 @@ class TransactionsController {
 
     app.post("/transactions", async (req, res) => {
       try {
-        const dados = new TransactionsModel(req.body);
-        await Validacoes.reqIsEmpty(dados)
+        const dados = await TransactionsModel.validateModel(req.body);
         const resposta = await TransactionsDAO.insertData(dados);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (error) {
@@ -39,9 +38,8 @@ class TransactionsController {
 
     app.put("/transactions/id/:id", async (req, res) => {
       try {
-        const dados = new TransactionsModel(req.body);
+        const dados = await TransactionsModel.validateModel(req.body);
         await Validacoes.notInBank(await TransactionsDAO.dataPickOne(req.params.id))
-        await Validacoes.reqIsEmpty(dados)
         const resposta = await TransactionsDAO.attData(dados, req.params.id)
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (error) {
