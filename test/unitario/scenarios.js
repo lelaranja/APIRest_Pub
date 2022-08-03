@@ -36,12 +36,24 @@ class Scenarios {
     //scenario 2
     {
       msg: "teste com dados vazios",
-      dados: {
-          "funcionario" : "Rodolpho",
-          "produtos" : undefined,
-          "valorCompra": 1400
-      }
-    }
+      dados: [
+        {
+          funcionario: "Rodolpho",
+          produtos: "",
+          valorCompra: 1400
+        },
+        {
+          funcionario: "",
+          produtos: "",
+          valorCompra: ""
+        },
+        {
+          funcionario: "Teste",
+          produtos: "Testando",
+          valorCompra: ""
+        }
+      ],
+    },
   ];
 }
 
