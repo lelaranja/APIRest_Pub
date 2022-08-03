@@ -5,7 +5,7 @@ import {
   TransactionsController,
   SuppliersController,
   MenuController,
-  // ClientController,
+  ClientController,
   // StorageController,
   // StaffController,
 } from "./controller/controller.js";
@@ -21,5 +21,5 @@ TransactionsController.routes(app);
 MenuController.routes(app);
 SuppliersController.routes(app);
 // StorageController.routes(app);
-// ClientController.routes(app);
+ClientController.routes(app);
 export default app;

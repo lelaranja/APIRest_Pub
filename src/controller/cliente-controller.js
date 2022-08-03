@@ -6,7 +6,7 @@ class ClientController {
     static routes = (app) => {
         app.get("/client", async (req, res) => {
             try {
-                const resposta = await ClientDAO.pegaTodosDados()
+                const resposta = await ClientDAO.pickAllData()
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (error) {
                 res.status(error.status).json(error.msg)
@@ -14,7 +14,7 @@ class ClientController {
         });
         app.get("/client/nome/:nome", async (req, res) => {
             try {
-                const resposta = await ClientDAO.pegaUmDado(req.params.nome);
+                const resposta = await ClientDAO.dataPickOne(req.params.nome);
                 res.status(resposta.status).json(resposta.resultado.msg)
             } catch (error) {
                 res.status(error.status).json(error.msg)
@@ -26,7 +26,7 @@ class ClientController {
                 const dados = new ClientModel(req.body);
                 // console.log(dados)
                 await Validacoes.reqIsEmpty(dados)
-                const resposta = await ClientDAO.inserirDados(dados);
+                const resposta = await ClientDAO.insertData(dados);
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {
                 res.status(error.status).json(error.msg);
@@ -35,9 +35,9 @@ class ClientController {
         app.put("/client/nome/:nome", async (req, res) => {
             try {
                 const dados = new ClientModel(req.body);
-                await Validacoes.notInBank(await ClientDAO.pegaUmDado(req.params.nome))
+                await Validacoes.notInBank(await ClientDAO.dataPickOne(req.params.nome))
                 await Validacoes.reqIsEmpty(dados)
-                const resposta = await ClientDAO.atualizarDado(dados, req.params.nome)
+                const resposta = await ClientDAO.attData(dados, req.params.nome)
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {
                 res.status(error.status).json(error.msg);
@@ -45,8 +45,8 @@ class ClientController {
         });
         app.delete("/client/nome/:nome", async (req, res) => {
             try {
-                await Validacoes.notInBank(await ClientDAO.pegaUmDado(req.params.nome))
-                const resposta = await ClientDAO.deletaDado(req.params.nome)
+                await Validacoes.notInBank(await ClientDAO.dataPickOne(req.params.nome))
+                const resposta = await ClientDAO.delData(req.params.nome)
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {
                 res.status(error.status).json(error.msg);
