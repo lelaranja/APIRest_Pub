@@ -19,11 +19,12 @@ class Scenarios {
     {
       msg: "teste com dados vazios",
       dados: {
-        "funcionario": "Rodolpho",
-        "produtos": undefined,
-        "valorCompra": 1400
-      }
-    }, {
+        funcionario: "Rodolpho",
+        produtos: undefined,
+        valorCompra: 1400,
+      },
+    },
+    {
       msg: [
         "Teste com dados vazios",
         "Teste com dados vazios",
@@ -69,20 +70,49 @@ class Scenarios {
       msg: [
         "teste com dados number",
         "teste sendo string",
-        "teste sendo undefined"
+        "teste sendo undefined",
       ],
       dados: ["5", 5, undefined],
-      toBe: [false, true, false]
+      toBe: [false, true, false],
+    },
+    //scenario 5
+    {
+      msg: [
+        "teste com menos de 14 caracteres",
+        "teste com mais de 14 caracteres",
+        "teste com 14 caracteres",
+        "teste sendo undefined",
+      ],
+      dados: ["1234567891234", "123456789123456", "12345678912345", undefined],
+      toBe: [false, false, true, false],
+    },
+    //scenario 6
+    {
+      msg: [
+        "teste com menos de 10 caracteres",
+        "teste com mais de 11 caracteres",
+        "teste com 10 caracteres",
+        "teste com 11 caracteres",
+        "teste sendo undefined",
+      ],
+      dados: [
+        "123456789",
+        "123456789123",
+        "1234567891",
+        "12345678912",
+        undefined,
+      ],
+      toBe: [false, false, true, true, false],
     },
     //scenario 7
     {
       msg: [
         "teste com numeros diferentes de 11",
         "teste com 11 caracteres",
-        "teste sendo undefined"
+        "teste sendo undefined",
       ],
       dados: ["3", "11111111111", undefined],
-      toBe: [false, true, false]
+      toBe: [false, true, false],
     }
   ];
 }

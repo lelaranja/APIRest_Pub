@@ -9,11 +9,16 @@ class Validacoes {
   static reqIsEmpty(dados) {
     return new Promise((resolve, reject) => {
       if (!this.someDataIsEmpty(dados)) {
-        reject(new ErrosModel("Parece que faltam alguns dados em sua requisição", 400))
+        reject(
+          new ErrosModel(
+            "Parece que faltam alguns dados em sua requisição",
+            400
+          )
+        );
       } else {
-        resolve()
+        resolve();
       }
-    })
+    });
   }
 
   static someDataIsEmpty(dados) {
@@ -41,17 +46,31 @@ class Validacoes {
 
   static isNumber(dados) {
     if (typeof dados === "number" || dados instanceof Number) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
-  static isCpf (dados){
-    if (dados.length === 11){
-      return true
-    }else {
-      return false
+  static isCpf(dados) {
+    if (dados.length === 11) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  static isCNPJ(dados) {
+    if (dados.length === 14) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  static isCell(dados) {
+    if (dados.length === 11 || dados.length === 10) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

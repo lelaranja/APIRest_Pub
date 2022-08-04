@@ -21,11 +21,8 @@ class ClientController {
             }
         });
         app.post("/client", async (req, res) => {
-            console.log(req)
             try {
-                const dados = new ClientModel(req.body);
-                // console.log(dados)
-                await Validacoes.reqIsEmpty(dados)
+                const dados = await ClientModel.validateModel(req.body);
                 const resposta = await ClientDAO.insertData(dados);
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {
@@ -34,9 +31,8 @@ class ClientController {
         });
         app.put("/client/nome/:nome", async (req, res) => {
             try {
-                const dados = new ClientModel(req.body);
+                const dados = await ClientModel.validateModel(req.body);
                 await Validacoes.notInBank(await ClientDAO.dataPickOne(req.params.nome))
-                await Validacoes.reqIsEmpty(dados)
                 const resposta = await ClientDAO.attData(dados, req.params.nome)
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {

@@ -1,6 +1,6 @@
 import DAO from './base-dao.js';
 
-class EstoqueDAO extends DAO{
+class StorageDAO extends DAO{
     static querySelectAll = "SELECT * FROM STORAGE"
     static querySelect = "SELECT * FROM STORAGE WHERE nomeProduto = ?"
     static queryInsert = "INSERT INTO STORAGE(fabricante,qtdProdutos,nomeProduto) VALUES(?, ?, ?)"
@@ -9,4 +9,4 @@ class EstoqueDAO extends DAO{
     static parmDel = "nomeProduto"
 }
 
-export default EstoqueDAO
+export default StorageDAO

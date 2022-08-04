@@ -4,4 +4,10 @@ import SuppliersController from "./fornecedor-controller.js";
 import ClientController from "./cliente-controller.js";
 import StaffController from "./funcionario-controller.js";
 
-export { TransactionsController, MenuController, SuppliersController, ClientController, StaffController };
+export {
+  TransactionsController,
+  MenuController,
+  SuppliersController,
+  ClientController,
+  StaffController,
+};

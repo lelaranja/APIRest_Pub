@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS "CLIENT" (
 static ADD_CLIENT_DATA = `
 INSERT INTO CLIENT (nome,telefone,email)
 VALUES 
-    ('Caipirinha', 'string', 'Drink de limão com cachaça 51 e açucar'),
-    ('Calabresa acebolada', 'string','Uma porçao de 400 gramas de calabresa com cebola frita'),
-    ('Skol', 'string','Pilsen, 350ml')
+    ('Gilson', '98744523', 'gilsons_drinks@mail.com'),
+    ('Josélia', '96654721', 'joselialima@mail.com'),
+    ('Breno', '932112021', 'brenoluiz@mail.com')
 `;
 
 static criaTabelaClient = () => {
