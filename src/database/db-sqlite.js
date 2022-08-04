@@ -8,7 +8,7 @@ const db = new sqlite3.Database(filePath);
 
 process.on("SIGINT", () =>
   db.close(() => {
-    console.log(" BD encerrado!");
+    console.log("Database encerrado.");
     process.exit(0);
   })
 );

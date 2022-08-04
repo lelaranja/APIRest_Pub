@@ -6,7 +6,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server/server.js",
-    "bd": "node ./src/database/create-and-populate.js"
+    "db": "node ./src/database/create-and-populate.js"
   },
   "keywords": [
     "pub",

@@ -1,7 +1,7 @@
 import Validacoes from "../services/validacoes.js";
 import ErrosModel from "../model/errors-model.js";
 
-class TransacaoModel {
+class TransactionsModel {
   constructor(dados) {
     this.funcionario = dados.funcionario;
     this.produtos = dados.produtos;
@@ -17,7 +17,7 @@ class TransacaoModel {
           Validacoes.isString(dados.produtos) &&
           Validacoes.isNumber(dados.valorCompra)
         ) {
-          const modelado = new TransacaoModel(dados);
+          const modelado = new TransactionsModel(dados);
           await Validacoes.reqIsEmpty(modelado);
           resolve(modelado);
         } else
@@ -31,4 +31,4 @@ class TransacaoModel {
   }
 }
 
-export default TransacaoModel;
+export default TransactionsModel;

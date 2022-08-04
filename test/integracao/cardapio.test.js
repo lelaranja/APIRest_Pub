@@ -8,18 +8,18 @@ class TestMenu extends Test {
         "valor": 21,
         "descricao": "descricao"
     }
-    static putAtt={
+    static putAtt = {
         "produto": "breja",
         "valor": 22,
         "descricao": "descricao"
     }
-    static param= "cerveja"
-    static describe = "Testando rotas cardapio"
+    static param = "cerveja"
+    static describe = "Testando rotas cardápio"
     static rootPath = "/menu"
     static paramPath = "/produto/"
     static paramAtt = "breja"
 
-    static setDados(dados){
+    static setDados(dados) {
         this.expect = dados.produto
     }
 }

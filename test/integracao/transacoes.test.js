@@ -14,7 +14,7 @@ class TestTransactions extends Test {
   };
 
   static param = 2;
-  static describe = "Testando rotas transactions";
+  static describe = "Testando rotas transações";
   static rootPath = "/transactions";
   static paramPath = "/id/";
   static paramAtt = 2;

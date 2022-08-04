@@ -1,29 +1,21 @@
 class Scenarios {
   static scenario = [
-    //scenario 1
+    //scenario 0
     {
-      msg: ["dados vazios", "dados validos"],
+      msg: ["dados vazios",
+        "dados validos"
+      ],
       dados: [
         [],
-        [
-          {
-            nome: "Estou preenchido",
-            estado: "Rio de Janeiro",
-            cidade: "Rio de Janeiro",
-          },
-        ],
+        [{
+          nome: "Estou preenchido",
+          estado: "Rio de Janeiro",
+          cidade: "Rio de Janeiro",
+        }, ],
       ],
       toBe: [true, false],
     },
-    //scenario 2
-    {
-      msg: "teste com dados vazios",
-      dados: {
-        funcionario: "Rodolpho",
-        produtos: undefined,
-        valorCompra: 1400,
-      },
-    },
+    //scenario 1    
     {
       msg: [
         "Teste com dados vazios",
@@ -31,8 +23,7 @@ class Scenarios {
         "Teste com dados vazios",
         "Teste com dados completos",
       ],
-      dados: [
-        {
+      dados: [{
           funcionario: "Rodolpho",
           produtos: "",
           valorCompra: 1400,
@@ -55,7 +46,7 @@ class Scenarios {
       ],
       toBe: [true, true, true, false],
     },
-    //scenario 3
+    //scenario 2
     {
       msg: [
         "Teste de string com string",
@@ -65,7 +56,7 @@ class Scenarios {
       dados: ["Sou uma string", "Tambem sou", 400],
       toBe: [true, true, false],
     },
-    //scenario 4
+    //scenario 3
     {
       msg: [
         "teste com dados number",
@@ -75,44 +66,40 @@ class Scenarios {
       dados: ["5", 5, undefined],
       toBe: [false, true, false],
     },
-    //scenario 5
+    //scenario 4
     {
       msg: [
         "teste com menos de 14 caracteres",
         "teste com mais de 14 caracteres",
-        "teste com 14 caracteres",
-        "teste sendo undefined",
+        "teste com 14 caracteres"
       ],
-      dados: ["1234567891234", "123456789123456", "12345678912345", undefined],
-      toBe: [false, false, true, false],
+      dados: ["1234567891234", "123456789123456", "12345678912345"],
+      toBe: [false, false, true],
     },
-    //scenario 6
+    //scenario 5
     {
       msg: [
         "teste com menos de 10 caracteres",
         "teste com mais de 11 caracteres",
         "teste com 10 caracteres",
-        "teste com 11 caracteres",
-        "teste sendo undefined",
+        "teste com 11 caracteres"
       ],
       dados: [
         "123456789",
         "123456789123",
         "1234567891",
-        "12345678912",
-        undefined,
+        "12345678912"
       ],
-      toBe: [false, false, true, true, false],
+      toBe: [false, false, true, true],
     },
-    //scenario 7
+    //scenario 6
     {
       msg: [
         "teste com numeros diferentes de 11",
-        "teste com 11 caracteres",
-        "teste sendo undefined",
+        "teste com 11 caracteres"
       ],
-      dados: ["3", "11111111111", undefined],
-      toBe: [false, true, false],
+      dados: ["3", "11111111111"],
+      toBe: [false, true],
     }
   ];
 }

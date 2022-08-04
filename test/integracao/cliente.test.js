@@ -8,18 +8,18 @@ class ClientMenu extends Test {
         telefone: "45698742",
         email: "jorge@mail.com"
     }
-    static putAtt={
+    static putAtt = {
         nome: "Lucas",
         telefone: "45698742",
         email: "lucas@mail.com"
     }
-    static param= "Jorge"
-    static describe = "Testando rotas Clientes"
+    static param = "Jorge"
+    static describe = "Testando rotas clientes"
     static rootPath = "/client"
     static paramPath = "/nome/"
     static paramAtt = "Lucas"
 
-    static setDados(dados){
+    static setDados(dados) {
         this.expect = dados.nome
     }
 }

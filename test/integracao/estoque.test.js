@@ -8,18 +8,18 @@ class TestStorage extends Test {
         "qtdProdutos": 210,
         "nomeProduto": "pepsi"
     }
-    static putAtt={
+    static putAtt = {
         "fabricante": "pepsico",
         "qtdProdutos": 21,
         "nomeProduto": "doritos"
     }
-    static param= "pepsi"
+    static param = "pepsi"
     static describe = "Testando rotas estoque"
     static rootPath = "/storage"
     static paramPath = "/nomeProduto/"
     static paramAtt = "doritos"
 
-    static setDados(dados){
+    static setDados(dados) {
         this.expect = dados.nomeProduto
     }
 }

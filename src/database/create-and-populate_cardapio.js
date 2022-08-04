@@ -28,13 +28,13 @@ class MenuDb {
     static criaTabelaMenu = () => {
         db.run(this.MENU_SCHEMA, (e) => {
             if (e) console.log(e);
-            else console.log("Tabela criada com sucesso");
+            else console.log("Tabela cardapio criada com sucesso");
         });
     };
     static populaTabelaMenu = () => {
         db.run(this.ADD_MENU_DATA, (e) => {
             if (e) console.log(e)
-            else console.log("Tabela populada com sucesso!");
+            else console.log("Tabela cardapio populada com sucesso!");
         });
     };
     static menuSerialize() {

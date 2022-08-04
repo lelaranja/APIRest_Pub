@@ -8,8 +8,8 @@ class SuppliersController {
       try {
         const resposta = await SuppliersDAO.pickAllData();
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -17,8 +17,8 @@ class SuppliersController {
       try {
         const resposta = await SuppliersDAO.dataPickOne(req.params.cnpj);
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -27,8 +27,8 @@ class SuppliersController {
         const dados = await SuppliersModel.validateModel(req.body);
         const resposta = await SuppliersDAO.insertData(dados);
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -44,8 +44,8 @@ class SuppliersController {
           req.params.cnpj
         );
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
 
@@ -56,8 +56,8 @@ class SuppliersController {
         );
         const resposta = await SuppliersDAO.delData(req.params.cnpj);
         res.status(resposta.status).json(resposta.resultado.msg);
-      } catch (e) {
-        res.status(e.status).json(e.msg);
+      } catch (error) {
+        res.status(error.status).json(error.msg);
       }
     });
   };

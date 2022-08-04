@@ -41,15 +41,6 @@ class UnitTests extends Scenarios {
     });
     describe("Verifica o tamanho do dado", () => {
       for (let i = 0; i < 3; i++) {
-        test(this.scenario[6].msg[i], () => {
-          expect(Validacoes.isNumber(this.scenario[6].dados[i])).toBe(
-            this.scenario[6].toBe[i]
-          );
-        });
-      }
-    });
-    describe("Verifica o tamanho do dado", () => {
-      for (let i = 0; i < 4; i++) {
         test(this.scenario[4].msg[i], () => {
           expect(Validacoes.isCNPJ(this.scenario[4].dados[i])).toBe(
             this.scenario[4].toBe[i]
@@ -58,10 +49,19 @@ class UnitTests extends Scenarios {
       }
     });
     describe("Verifica o tamanho do dado", () => {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 4; i++) {
         test(this.scenario[5].msg[i], () => {
           expect(Validacoes.isCell(this.scenario[5].dados[i])).toBe(
             this.scenario[5].toBe[i]
+          );
+        });
+      }
+    });
+    describe("Verifica o tamanho do dado", () => {
+      for (let i = 0; i < 2; i++) {
+        test(this.scenario[6].msg[i], () => {
+          expect(Validacoes.isCpf(this.scenario[6].dados[i])).toBe(
+            this.scenario[6].toBe[i]
           );
         });
       }
