@@ -16,7 +16,7 @@ class SuppliersController {
     app.get("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
         const resposta = await SuppliersDAO.dataPickOne(req.params.cnpj);
-        res.status(resposta.status).json(resposta.resultado);
+        res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {
         res.status(e.status).json(e.msg);
       }
@@ -24,8 +24,7 @@ class SuppliersController {
 
     app.post("/suppliers", async (req, res) => {
       try {
-        const dados = new SuppliersModel(req.body);
-        await Validacoes.reqIsEmpty(dados);
+        const dados = await SuppliersModel.validateModel(req.body);
         const resposta = await SuppliersDAO.insertData(dados);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (e) {

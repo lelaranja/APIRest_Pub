@@ -46,6 +46,21 @@ class Validacoes {
       return false
     }
   }
+  static isCNPJ(dados) {
+    if (dados.length === 14) {
+      return true
+    } else {
+      return false
+    }
+  }
+  static isCell(dados) {
+    if (dados.length === 11 || dados.length === 10) {
+      return true
+    } else {
+      return false
+    }
+  }
 }
+
 
 export default Validacoes;
