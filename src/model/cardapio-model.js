@@ -8,19 +8,21 @@ class CardapioModel {
         this.descricao = requisicao.descricao;
     }
 
-    static validateModel(dados){
-        return new Promise(async(resolve,reject)=>{
-            try{
-                if(Validacoes.isNumber(dados.valor)){
+    static validateModel(dados) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                if (Validacoes.isNumber(dados.valor) &&
+                    Validacoes.isString(dados.produto) &&
+                    Validacoes.isString(dados.descricao)) {
                     const newModel = new CardapioModel(dados)
                     await Validacoes.reqIsEmpty(newModel)
                     resolve(newModel)
                 } else {
                     reject(
-                        new ErrosModel("Dados preenchidos incorretamente",400)
+                        new ErrosModel("Alguns dados estão preenchidos incorretamente", 400)
                     )
                 }
-            } catch(error) {
+            } catch (error) {
                 reject(error)
             }
         })
