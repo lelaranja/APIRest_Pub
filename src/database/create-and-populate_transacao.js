@@ -17,9 +17,9 @@ class TransactionsDb {
   static ADD_TRANSACTIONS_DATA = `
     INSERT INTO TRANSACTIONS (funcionario,produtos,valorCompra,data)
     VALUES 
-        ('Kleberr Knob', 'Drink de fogo, Caninha da serra, Batata gourmet', 1400, '10/04/2022'),
-        ('Kleberr Knob', 'Caninha da serra, Shot de ices', 3000, '10/04/2022'),
-        ('Flavio Mustang', 'Drink de fogo, Canitina da roça,Hamburguer gourmet', 5000, '11/04/2022')
+        ('Kleberr Knob', 'Drink de fogo, Caninha da serra, Batata gourmet', 50.00, '10/04/2022'),
+        ('Kleberr Knob', 'Caninha da serra, Shot de ices', 30.00, '10/04/2022'),
+        ('Flavio Mustang', 'Drink de fogo, Canitina da roça, Hamburguer gourmet', 50.00, '11/04/2022')
     `;
 
   static criaTabelaTransactions() {
