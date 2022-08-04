@@ -55,7 +55,9 @@ npm start
 ## 🗂️ Inicializando o banco de dados
 Para iniciar um banco de dados novo com os dados padrão, delete o arquivo `database.db` e rode o comando abaixo:
 
-<h4 align="center">⚠️Em construção</h4>
+```
+npm run db
+```
 
 ## :bug: Testes
 ```
@@ -66,7 +68,84 @@ npm test
 
 ### Cliente
 
-<h4 align="center">⚠️Em construção</h4>
+ * __GET  /client__
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Aqui estão seus dados",
+	"dados": [
+		{
+			"id": 1,
+			"nome": "Gilson",
+			"telefone": "2198744523",
+			"email": "gilsons_drinks@mail.com"
+		}
+    ```
+
+* __GET  /client/nome/:nome__
+
+    Esquema da resposta
+    ```json
+	{
+		"msg": "Aqui estão seus dados",
+		"dados": {
+			"id": 2,
+			"nome": "Josélia",
+			"telefone": "2196654721",
+			"email": "joselialima@mail.com"
+		}
+	}
+    ```
+ * __POST /client__
+
+    Esquema da requisição
+    ```json
+	  {
+		"nome": "Sabrina",
+		"telefone": "1196454756",
+		"email": "sabrinadev@devmail.com"
+	}
+    ```
+
+Esquema da resposta
+    ```json
+	{
+		"msg": "dados inseridos com sucesso",
+		"dados": {
+			"nome": "Sabrina",
+			"telefone": "1196454756",
+			"email": "sabrinadev@devmail.com"
+		}
+	}
+    ```
+
+* __PUT /client/nome/:nome__
+
+    Esquema da requisição
+    ```json
+    	 {
+		"nome": "Letícia",
+		"telefone": "1198762345",
+		"email": "leledev@devmail.com"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /client/nome/:nome__
+
+    Esquema da resposta
+    ```json
+   {
+	"msg": "Dados deletados com sucesso onde nome = Letícia"
+   }
+   ```
 
 ### Funcionário
 
@@ -232,24 +311,84 @@ npm test
 
 ### Estoque
 
-*__GET /storage__
+* __GET /storage__
 
 	Esquema da resposta
 ```json
-{
+	{
 	"msg": "Aqui estão seus dados",
-	 "dados": [
-        {
-            "id": 1,
-            "fabricante": "Ambev",
-            "qtdProdutos": 150,
-            "nomeProduto": "Antarctica"
-        }
-	 ]
-}
+	"dados": [
+		{
+			"id": 1,
+			"fabricante": "Ambev",
+			"qtdProdutos": 150,
+			"nomeProduto": "Antarctica"
+		}
+```
 
+* __GET  /storage/nomeProduto/:nomeProduto__
 
+    Esquema da resposta
+    ```json
+	{
+	"msg": "Aqui estão seus dados",
+	"dados": {
+		"id": 2,
+		"fabricante": "GrupoPetropolis",
+		"qtdProdutos": 2,
+		"nomeProduto": "Itaipava"
+		}
+	}
+    ```
+ * __POST /storage__
 
+    Esquema da requisição
+    ```json
+ 	{
+		"fabricante": "Seara",
+		"qtdProdutos": 90,
+		"nomeProduto": "Calabresa"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+  	{
+	  "msg": "dados inseridos com sucesso",
+	  "dados": {
+	  	  "fabricante": "Seara",
+		  "qtdProdutos": 90,
+		  "nomeProduto": "Calabresa"
+		  }
+	}
+    ```
+
+* __PUT /storage/nomeProduto/:nomeProduto__
+
+    Esquema da requisição
+    ```json
+    	{
+		"fabricante": "Sadia",
+		"qtdProdutos": 90,
+		"nomeProduto": "Calabresa"
+	}
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+	"msg": "Dados atualizados com sucesso"
+    }
+    ```
+    
+* __DELETE  /storage/nomeProduto/:nomeProduto__
+
+    Esquema da resposta
+    ```json
+   {
+	"msg": "Dados deletados com sucesso onde produto = Calabresa"
+   }
+   ```
 
 
 ### Fornecedor
@@ -332,9 +471,10 @@ npm test
 
     Esquema da resposta
     ```json
-   {
+     {
 	    "msg": "Dados deletados com sucesso onde CNPJ = 326789123458"
-   }
+     }
+    ```
    
 ### Transação
  * __GET  /transactions__
