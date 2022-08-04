@@ -108,7 +108,7 @@ npm test
 	}
     ```
 
-Esquema da resposta
+    Esquema da resposta
     ```json
 	{
 		"msg": "dados inseridos com sucesso",
@@ -313,8 +313,8 @@ Esquema da resposta
 
 * __GET /storage__
 
-	Esquema da resposta
-```json
+    Esquema da resposta
+    ```json
 	{
 	"msg": "Aqui estão seus dados",
 	"dados": [
@@ -324,7 +324,7 @@ Esquema da resposta
 			"qtdProdutos": 150,
 			"nomeProduto": "Antarctica"
 		}
-```
+   ```
 
 * __GET  /storage/nomeProduto/:nomeProduto__
 
