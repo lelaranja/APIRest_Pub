@@ -37,6 +37,20 @@ class UnitTests extends Scenarios {
         })
       }
     })
+    describe("Verifica o tamanho do dado", () => {
+      for (let i = 0; i < 4; i++) {
+        test(this.scenario[4].msg[i], () => {
+          expect(Validacoes.isCNPJ(this.scenario[4].dados[i])).toBe(this.scenario[4].toBe[i])
+        })
+      }
+    })
+    describe("Verifica o tamanho do dado", () => {
+      for (let i = 0; i < 5; i++) {
+        test(this.scenario[5].msg[i], () => {
+          expect(Validacoes.isCell(this.scenario[5].dados[i])).toBe(this.scenario[5].toBe[i])
+        })
+      }
+    })
   }
 }
 
