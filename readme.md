@@ -66,6 +66,19 @@ npm test
 
 ## 🏎️ Rotas
 
+### Restrição de acessos
+ #### Utilização do Header (User)
+ 
+ 	* Rota GET
+	Não é necessário validação
+	
+	* Rotas POST/PUT
+	É necessário uma validação de user, podendo ser 'sub' ou 'admin'
+	
+	* Rota DELETE
+	É necessário uma validação de user como 'admin'
+	
+
 ### Cliente
 
  * __GET  /client__
