@@ -10,11 +10,12 @@ class TransacaoModel {
   }
 
   static validateModel(dados) {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       try {
         if (
           Validacoes.isString(dados.funcionario) &&
-          Validacoes.isString(dados.produtos)
+          Validacoes.isString(dados.produtos) &&
+          Validacoes.isNumber(dados.valorCompra)
         ) {
           const modelado = new TransacaoModel(dados);
           await Validacoes.reqIsEmpty(modelado);
@@ -24,7 +25,7 @@ class TransacaoModel {
             new ErrosModel("Alguns dados estão preenchidos incorretamente", 400)
           );
       } catch (error) {
-        reject(error)
+        reject(error);
       }
     });
   }
