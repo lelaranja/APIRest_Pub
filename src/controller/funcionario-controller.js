@@ -8,8 +8,8 @@ class StaffControllers {
             try {
                 const resposta = await StaffDAO.pickAllData()
                 res.status(resposta.status).json(resposta.resultado.msg)
-            } catch (e) {
-                res.status(e.status).json(e.msg);
+            } catch (error) {
+                res.status(error.status).json(error.msg);
             }
         });
 
@@ -17,8 +17,8 @@ class StaffControllers {
             try {
                 const resposta = await StaffDAO.dataPickOne(req.params.nome)
                 res.status(resposta.status).json(resposta.resultado.msg)
-            } catch (e) {
-                res.status(e.status).json(e.msg);
+            } catch (error) {
+                res.status(error.status).json(error.msg);
             }
         });
 
@@ -27,8 +27,8 @@ class StaffControllers {
                 const dados = await StaffModel.validateModel(req.body);
                 const resposta = await StaffDAO.insertData(dados)
                 res.status(resposta.status).json(resposta.resultado.msg);
-            } catch (e) {
-                res.status(e.status).json(e.msg);
+            } catch (error) {
+                res.status(error.status).json(error.msg);
             }
         });
 
@@ -39,8 +39,8 @@ class StaffControllers {
                 await Validacoes.reqIsEmpty(dados)
                 const resposta = await StaffDAO.attData(dados, req.params.nome);
                 res.status(resposta.status).json(resposta.resultado.msg);
-            } catch (e) {
-                res.status(e.status).json(e.msg);
+            } catch (error) {
+                res.status(error.status).json(error.msg);
             }
         });
 
@@ -49,8 +49,8 @@ class StaffControllers {
                 await Validacoes.notInBank(await StaffDAO.dataPickOne(req.params.nome));
                 const resposta = await StaffDAO.delData(req.params.nome);
                 res.status(resposta.status).json(resposta.resultado.msg)
-            } catch (e) {
-                res.status(e.status).json(e.msg);
+            } catch (error) {
+                res.status(error.status).json(error.msg);
             }
         })
 
@@ -59,4 +59,3 @@ class StaffControllers {
 }
 
 export default StaffControllers;
-

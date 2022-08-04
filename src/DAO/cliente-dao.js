@@ -1,6 +1,6 @@
 import DAO from "./base-dao.js"
 
-class ClientDAO extends DAO{
+class ClientDAO extends DAO {
     static querySelectAll = 'SELECT * FROM CLIENT'
     static querySelect = 'SELECT * FROM CLIENT WHERE nome = ?'
     static queryInsert = 'INSERT INTO CLIENT (nome,telefone,email) VALUES (?,?,?)'

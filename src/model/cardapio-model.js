@@ -1,7 +1,7 @@
 import Validacoes from '../services/validacoes.js'
 import ErrosModel from './errors-model.js';
 
-class CardapioModel {
+class MenuModel {
     constructor(requisicao) {
         this.produto = requisicao.produto;
         this.valor = requisicao.valor;
@@ -14,7 +14,7 @@ class CardapioModel {
                 if (Validacoes.isNumber(dados.valor) &&
                     Validacoes.isString(dados.produto) &&
                     Validacoes.isString(dados.descricao)) {
-                    const newModel = new CardapioModel(dados)
+                    const newModel = new MenuModel(dados)
                     await Validacoes.reqIsEmpty(newModel)
                     resolve(newModel)
                 } else {
@@ -29,4 +29,4 @@ class CardapioModel {
     }
 }
 
-export default CardapioModel;
+export default MenuModel;

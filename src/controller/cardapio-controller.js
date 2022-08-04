@@ -1,5 +1,4 @@
 import MenuDAO from "../DAO/cardapio-dao.js"
-import CardapioModel from "../model/cardapio-model.js";
 import MenuModel from "../model/cardapio-model.js"
 import Validacoes from "../services/validacoes.js";
 
@@ -23,7 +22,7 @@ class MenuController {
         });
         app.post("/menu", async (req, res) => {
             try {
-                const dados = await CardapioModel.validateModel(req.body);
+                const dados = await MenuModel.validateModel(req.body);
                 const resposta = await MenuDAO.insertData(dados);
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {

@@ -51,4 +51,4 @@ class ClientController {
     }
 }
 
-export default ClientController 
+export default ClientController

@@ -5,24 +5,23 @@ class TestSupplier extends Test {
     static expect;
     static mock = {
         nome: "Empresa",
-        telefone: "1",
-        cnpj: "2",
+        telefone: "11111111111",
+        cnpj: "11111111111111",
         produto: "Cerveja"
     }
     static putAtt = {
         nome: "Empresa1",
-        telefone: "1",
-        cnpj: "23",
+        telefone: "11111111111",
+        cnpj: "11111111111112",
         produto: "Breja"
     }
-    static param = "2"
+    static param = "11111111111111"
     static describe = "Testando rotas fornecedor"
     static rootPath = "/suppliers"
     static paramPath = "/cnpj/"
-    static paramAtt = "23"
+    static paramAtt = "11111111111112"
 
     static setDados(dados) {
-        console.log(dados);
         this.expect = dados.cnpj
     }
 }

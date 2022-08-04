@@ -12,7 +12,7 @@ class DAO {
           reject(new ErrosModel("Banco de dados vazio", 404));
         } else {
           resolve({
-            
+
             resultado: {
               msg: {
                 msg: "Aqui estão seus dados",

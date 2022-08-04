@@ -14,7 +14,9 @@ class SuppliersModel {
       try {
         if (
           Validacoes.isString(dados.nome) &&
-          Validacoes.isString(dados.produto) && Validacoes.isCNPJ(dados.cnpj) && Validacoes.isCell(dados.telefone)
+          Validacoes.isString(dados.produto) &&
+          Validacoes.isCNPJ(dados.cnpj) &&
+          Validacoes.isCell(dados.telefone)
         ) {
           const modelado = new SuppliersModel(dados);
           await Validacoes.reqIsEmpty(modelado);
