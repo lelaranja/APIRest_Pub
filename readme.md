@@ -609,6 +609,10 @@ npm test
     }
   ```
 
+## 🔌 Link do Heroku
+
+<a href="https://apirest-pub.herokuapp.com/">apirest-pub</a>
+
 ##  🤓 Desenvolvido por
 
 <table align='center'>
