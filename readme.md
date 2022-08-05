@@ -42,7 +42,12 @@ Entrando na pasta:
 cd APIRest_Pub
 ```
 
-Instalando os pacotes:
+Instalando apenas pacotes necessários:
+```
+npm i --production
+```
+
+Instalando todos os pacotes:
 ```
 npm install
 ```
@@ -70,13 +75,13 @@ npm test
  #### Utilização do Header (User)
  
  	* Rota GET
-	Não é necessário validação
+	Não é necessária autenticação
 	
 	* Rotas POST/PUT
-	É necessário uma validação de user, podendo ser 'sub' ou 'admin'
+	É necessário uma autenticação de key = user, podendo ser o value = 'sub' ou value = 'admin'
 	
 	* Rota DELETE
-	É necessário uma validação de user como 'admin'
+	É necessário uma autenticação de key = user e value = 'admin'
 	
 
 ### Cliente
