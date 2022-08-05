@@ -1,5 +1,5 @@
 import StorageDAO from "../DAO/estoque-dao.js";
-import StorageModel from "../Model/estoque-model.js";
+import StorageModel from "../model/estoque-model.js";
 import Validacoes from "../services/validacoes.js";
 
 class StorageController {
