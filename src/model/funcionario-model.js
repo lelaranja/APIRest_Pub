@@ -11,7 +11,11 @@ class StaffModel {
     static validateModel(dados) {
         return new Promise(async (resolve, reject) => {
             try {
-                if (Validacoes.isString(dados.nome) && Validacoes.isString(dados.cpf) && Validacoes.isCpf(dados.cpf) && Validacoes.isString(dados.datadenascimento)) {
+                if (
+                    Validacoes.isString(dados.nome) &&
+                    Validacoes.isString(dados.cpf) &&
+                    Validacoes.isCpf(dados.cpf) &&
+                    Validacoes.isString(dados.datadenascimento)) {
                     const newModel = new StaffModel(dados)
                     await Validacoes.reqIsEmpty(newModel)
                     resolve(newModel)
