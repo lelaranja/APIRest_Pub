@@ -8,7 +8,7 @@ class StorageModel {
         this.nomeProduto = data.nomeProduto;
     }
 
-    static ValidateModel(dados) {
+    static validateModel(dados) {
         return new Promise(async (resolve, reject) => {
             try {
                 if (Validacoes.isString(dados.fabricante) && Validacoes.isString(dados.nomeProduto) && Validacoes.isNumber(dados.qtdProdutos)) {
