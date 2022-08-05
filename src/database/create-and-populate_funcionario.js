@@ -21,9 +21,9 @@ class StaffDb {
   static ADD_STAFF_DATA = `
     INSERT INTO STAFF (nome, cpf, datadenascimento)
     VALUES 
-        ('Leovegildo Moura', '23912345014', '10/04/2000'),
-        ('Neolasco Comodoro', '54919259395', '23/09/1992'),
-        ('Digo Assun', '12821393493', '11/05/1985')
+        ('Leovegildo Moura', '23912345014', 'Oct 04 2000'),
+        ('Neolasco Comodoro', '54919259395', 'Sep 23 1992'),
+        ('Digo Assun', '12821393493', 'May 11 1985')
     `;
 
   static criaTabelaStaff() {
