@@ -13,7 +13,9 @@ class ClientModel {
       try {
         if (
           Validacoes.isString(dados.nome) &&
-          Validacoes.isString(dados.email)
+          Validacoes.isString(dados.email) &&
+          Validacoes.isCell(dados.telefone)
+
         ) {
           const modelado = new ClientModel(dados);
           await Validacoes.reqIsEmpty(modelado);

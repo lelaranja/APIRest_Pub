@@ -34,7 +34,7 @@ class SuppliersController {
 
     app.put("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
-        const dados = new SuppliersModel(req.body);
+        const dados = await SuppliersModel.validateModel(req.body);
         await Validacoes.notInBank(
           await SuppliersDAO.dataPickOne(req.params.cnpj)
         );
