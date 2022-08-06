@@ -35,14 +35,8 @@ class SuppliersController {
     app.put("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
         const dados = await SuppliersModel.validateModel(req.body);
-        await Validacoes.notInBank(
-          await SuppliersDAO.dataPickOne(req.params.cnpj)
-        );
-        await Validacoes.reqIsEmpty(dados);
-        const resposta = await SuppliersDAO.attData(
-          dados,
-          req.params.cnpj
-        );
+        await Validacoes.notInBank(await SuppliersDAO.dataPickOne(req.params.cnpj));
+        const resposta = await SuppliersDAO.attData(dados, req.params.cnpj);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (error) {
         res.status(error.status).json(error.msg);
@@ -51,9 +45,7 @@ class SuppliersController {
 
     app.delete("/suppliers/cnpj/:cnpj", async (req, res) => {
       try {
-        await Validacoes.notInBank(
-          await SuppliersDAO.dataPickOne(req.params.cnpj)
-        );
+        await Validacoes.notInBank(await SuppliersDAO.dataPickOne(req.params.cnpj));
         const resposta = await SuppliersDAO.delData(req.params.cnpj);
         res.status(resposta.status).json(resposta.resultado.msg);
       } catch (error) {

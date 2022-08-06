@@ -36,7 +36,6 @@ class StaffControllers {
             try {
                 const dados = await StaffModel.validateModel(req.body);
                 await Validacoes.notInBank(await StaffDAO.dataPickOne(req.params.nome));
-                await Validacoes.reqIsEmpty(dados)
                 const resposta = await StaffDAO.attData(dados, req.params.nome);
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {

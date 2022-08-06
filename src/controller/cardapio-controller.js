@@ -33,7 +33,6 @@ class MenuController {
             try {
                 const dados = await MenuModel.validateModel(req.body);
                 await Validacoes.notInBank(await MenuDAO.dataPickOne(req.params.produto))
-                await Validacoes.reqIsEmpty(dados)
                 const resposta = await MenuDAO.attData(dados, req.params.produto)
                 res.status(resposta.status).json(resposta.resultado.msg);
             } catch (error) {
