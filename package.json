@@ -4,7 +4,7 @@
   "description": "Projeto de API - Pub Módulo 4",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "start": "node ./src/server.js",
+    "start": "node ./src/server/server.js",
     "dev": "nodemon ./src/server/server.js",
     "db": "node ./src/database/create-and-populate.js"
   },
