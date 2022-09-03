@@ -5,12 +5,12 @@ class ClientMenu extends Test {
     static expect;
     static mock = {
         nome: "Jorge",
-        telefone: "45698742",
+        telefone: "21995311136",
         email: "jorge@mail.com"
     }
     static putAtt = {
         nome: "Lucas",
-        telefone: "45698742",
+        telefone: "21995311136",
         email: "lucas@mail.com"
     }
     static param = "Jorge"

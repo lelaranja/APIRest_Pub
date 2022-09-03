@@ -22,7 +22,7 @@ class StorageController {
         })
         app.post('/storage', async (req, res) => {
             try {
-                const dados = await StorageModel.ValidateModel(req.body)
+                const dados = await StorageModel.validateModel(req.body)
                 const response = await StorageDAO.insertData(dados)
                 res.status(response.status).json(response.resultado.msg)
             } catch (error) {
@@ -31,7 +31,7 @@ class StorageController {
         })
         app.put('/storage/nomeProduto/:nomeProduto', async (req, res) => {
             try {
-                const dados = await StorageModel.ValidateModel(req.body);
+                const dados = await StorageModel.validateModel(req.body);
                 await Validacoes.notInBank(await StorageDAO.dataPickOne(req.params.nomeProduto))
                 const response = await StorageDAO.attData(dados, req.params.nomeProduto)
                 res.status(response.status).json(response.resultado.msg)
