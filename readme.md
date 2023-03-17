@@ -690,10 +690,6 @@ Esquema da resposta
 ```
 
 
-## 🔌 Link do Heroku
-
-<a href="https://apirest-pub.herokuapp.com/">apirest-pub</a>
-
 ## 🤓 Desenvolvido por
 
 <table align='center'>
